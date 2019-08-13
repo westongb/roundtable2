@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { exportAllDeclaration } from "@babel/types";
 import "./warcouncil.css";
+import Journal from "./JournalEntree";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class warCouncil extends Component {
   constructor(props) {
     super(props);
     this.state = {
       King: "",
-      Warrior: this.props.warriorAnswer,
+      Warrior: this.warriorWorked,
       Magician: "",
       Lover: ""
     };
@@ -16,12 +18,22 @@ class warCouncil extends Component {
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    //this.setState({ [event.target.name]: event.target.value });
     event.preventDefault();
   }
+
+    try = () => {
+      this.props.history.push("/roundtable/journal")
+    }
+
+  warriorWorked () {
+    const {roundtable}  = this.props.match.params
+    const {warriorAnswer} = this.props.location.state
+  }
+
   handleSubmit(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.props.warriorAnswer);
+    console.log(this.state.Warrior);
     event.preventDefault();
   }
 
@@ -49,7 +61,7 @@ class warCouncil extends Component {
           <label>Warrior</label>
           <textarea
             type="textarea"
-            placeholder="Warrior input"
+            placeholder= "warrior input"
             value={this.state.Warrior}
             onChange={this.handleChange}
             rows="4"
@@ -74,9 +86,10 @@ class warCouncil extends Component {
             name="Lover"
           />
           <br />
-          <button type="submit" onClick={this.resetForm}>
-            Submit
+          <button type="submit" onClick={this.try}>
+           Submit
           </button>
+          <Route path ="/roundtable/journal" component={Journal} state={this.state.Warrior} name={"weston"}/>
         </form>
 
         <h1>Notes on the Meeting</h1>

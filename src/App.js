@@ -6,10 +6,14 @@ import WarCouncil from "./Components/warcouncil";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import about from "./Components/about";
 import Home from "./Components/Home";
+import Journal from "./Components/JournalEntree";
 
 class App extends Component {
+state = {
+}
+
+
   render(props) {
-    const warriorAnswer = "";
     return (
       <div>
         <Router>
@@ -18,8 +22,9 @@ class App extends Component {
           <Route path={"Home"} component={Home} />
           <Route
             path={"warcouncil"}
-            render={props => <warCouncil {...props} warriorAnswer="Answer" />}
-          />
+            component={WarCouncil}
+            />
+            <Route path={"/roundtable/journal"} component={Journal}/>
         </Router>
       </div>
     );
