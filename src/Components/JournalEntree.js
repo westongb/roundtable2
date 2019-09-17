@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { exportAllDeclaration } from "@babel/types";
-import RoundTable from "./warcouncil";
+
 
 class Journal extends Component {
     constructor (props){

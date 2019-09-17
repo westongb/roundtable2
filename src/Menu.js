@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { exportAllDeclaration } from "@babel/types";
 import "./Menu.css";
-import roundtable from "./Components/warcouncil";
 import Home from "./Components/Home";
 import about from "./Components/about";
+import Entrylist from "./Components/Entrylist"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Roundtable from "./Components/warcouncil";
 
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state= {
-      warriorAnswer:"try this"
-    }
-  }
-
-  answerIsThere () {
-    const {props} = this.state.warriorAnswer;
   }
 
   render() {
@@ -28,9 +22,7 @@ class Menu extends Component {
             <span className="menuItems">
               <Link to="/about">About</Link>
               <Link to="/Home">Home</Link>
-              <Link to= {{pathname: "/roundtable", state:{
-                warriorAnswer: ""}
-              } }>Round Table</Link>
+              <Link to= "/roundtableapp/Entrylist">Round Table</Link>
             </span>
             <div>{this.answerIsThere}</div>
           </nav>
@@ -38,8 +30,9 @@ class Menu extends Component {
 
         <Route path="/Home" exact component={Home}  />
         <Route path="/about" exact component={about} />
-        <Route path="/roundtable" exact component={roundtable} />
-      </Router>
+        <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
+        <Route path="/roundtable" exact component={Roundtable} />
+        </Router>
     );
   }
 }
