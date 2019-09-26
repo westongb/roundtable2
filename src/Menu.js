@@ -31,7 +31,7 @@ class Menu extends Component {
         <Route path="/Home" exact component={Home}  />
         <Route path="/about" exact component={about} />
         <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
-        <Route path="/roundtable" exact component={Roundtable} />
+        {/* <Route path="/roundtable" exact component={Roundtable} /> */}
         </Router>
     );
   }

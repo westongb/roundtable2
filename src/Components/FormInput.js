@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import { async } from "q";
 
 class InputForm extends Component{
     constructor (props){
         super(props);
         this.state ={
             name: "",
+      
         }
         this.handleChange = this.handleChange.bind(this);
+      
     }
 
     handleChange(event,props) {
@@ -14,10 +17,6 @@ class InputForm extends Component{
         event.preventDefault();
       }
 
-    handleSubmit (props, event) {
-      event.preventDefault();
-      this.props.onAnswerSubmit(props)
-    }
 
     render() {
         return (

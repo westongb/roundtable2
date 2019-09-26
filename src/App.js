@@ -7,6 +7,7 @@ import about from "./Components/about";
 import Home from "./Components/Home";
 import Journal from "./Components/JournalEntree";
 import Roundtable from "./Components/warcouncil";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 state = {
