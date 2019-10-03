@@ -15,27 +15,34 @@ class EntryItem extends Component {
   
 
 render () {
-    console.log(this.props.Entrys[0])
+   
+   
     let item = Array.from(this.props.Entrys)
-    let [setDate, Journal] = item
-    // let {setDate, Journal} = Journalitem
-    // let oneItem= item.map(function (item) {
-    //         return Object(item) } )
+    let [JournalEntry] = item
+    let [setDate, Journal] = JournalEntry
+    console.log(JournalEntry)
+
+    // let entryItem = item.map((entryItem) =>
+    //     <tr>
+    //      <td>{setDate}</td>
+    //     <td>{Journal}</td>
+    //     </tr>);
+
     
    
     
     
 
-    let date = JSON.stringify(Journal)
+    // let date = JSON.stringify(item)
 
-    console.log(Journal)
+    // console.log(item)
 
 
     return (
         <div>
           <tr>
               <td>
-                  {date}
+                  {}
               </td>
           </tr>
         </div>

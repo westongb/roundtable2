@@ -115,7 +115,7 @@ class warCouncil extends Component {
           <textarea
             type="textarea"
             placeholder="Warrior input"
-            value={this. props.Warrior}
+            value={this.props.Warrior}
             onChange={this.handleChange}
             rows="4"
             name="Warrior"

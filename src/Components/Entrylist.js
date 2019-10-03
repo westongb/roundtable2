@@ -18,25 +18,30 @@ class Entrylist extends Component {
 
 
     
+
+    
         this.state = {
 
             // Input Data
-            newRoundTable: {
 
+                King: "",
+                Warrior: "",
+                Magician: "",
+                Lover:"",
+
+                newRoundTable: "",
               submitDate: date,
-              Journal : [
-                      King= "",
-                      Warrior = "",
-                      Magician= "",
-                      Lover= ""
-              ]
-          },
- 
-            // Stored Arrays
-                Entrys: "",
+             
+                            
+          // Stored Arrays
+                Entrys: [],
+
+                  setDate:"",
+                  Journal:"",
+                
               
               
-                newAnswer:""
+                newEntry:""
           };
         }
     
@@ -52,18 +57,12 @@ class Entrylist extends Component {
 
           handleSubmit = async (event) => {
             event.preventDefault();
-          
-            await this.setState(
-              { 
-              King: this.state.newRoundTable.Journal.King.value,
-              Warrior : this.state.newRoundTable.Journal.Warrior.value,
-              Magician : this.state.newRoundTable.Journal.Magician.value,
-              Lover : this.state.newRoundTable.Journal.Lover.value
-              });
-              
-            await this.setDate(event);
+            await this.setState({
+              setDate: this.state.submitDate,
+              Journal: [this.state.King, this.state.Warrior, this.state.Magician, this.state.Lover] ,
+              })
             await this.setArray(event);
-       
+            await this.setDate(event);
                
         // reset input state
             // await this.setState({
@@ -81,29 +80,15 @@ class Entrylist extends Component {
         setArray = ( event, Date) => {
               event.preventDefault()
               event.stopPropagation()
-            this.setState({
-              
-              Entrys : Object.assign(this.state.newRoundTable.submitDate, this.state.newRoundTable.Journal)
-            })
-            
-        }
-
-
-
-
-
-//         // Answers = () => { 
-//         //     this.setState({
-//         //     newAnswer: this.state.Entrys.map((number, index) => (<td> {number} </td>))
-//         //     })
-// }
-
+               this.setState({
+              newEntry: [{setDate: this.state.setDate}, {Journal: this.state.Journal}]
+              })
+            }
 
         setDate = (data) => {
             this.setState({
-            newRoundTable: newRoundTable.submitDate,
-            newRoundTable:  newRoundTable.Journal
-           
+            Entrys: [...this.state.Entrys, this.state.newEntry]
+                    
             })
         }
      
@@ -114,15 +99,11 @@ class Entrylist extends Component {
 
 render () {
 
-  
   let myItem = this.state.Entrys
-
-  
-
-
 
   let displayItem = JSON.stringify(myItem)
 
+  console.log(this.state.newRoundTable.submitDate)
     return (
         
         <div>
@@ -166,10 +147,11 @@ render () {
 
         {/* Add componet warcouncil */}
                         <WarCouncil
-                        King = { this.state.newRoundTable.Journal.King.value}
-                        Warrior = {this.state.newRoundTable.Journal.Warrior.value}
-                        Magician = {this.state.newRoundTable.Journal.Magician.value}
-                        Lover = {this.state.newRoundTable.Journal.Lover.value}
+                        
+                        King = { this.state.King}
+                        Warrior = {this.state.Warrior}
+                        Magician = {this.state.Magician}
+                        Lover = {this.state.Lover}
                         // Date = {this.newRoundTable.submitDate}
                         onAnswerChange = {this.handleChange}
                         onAnswerSubmit = {this.handleSubmit}/>
