@@ -124,7 +124,7 @@ class warCouncil extends Component {
           <textarea
             type="textarea"
             placeholder="Magician input"
-            value={this.state.Magician}
+            value={this.props.Magician}
             onChange={this.handleChange}
             rows="4"
             name="Magician"
@@ -133,7 +133,7 @@ class warCouncil extends Component {
           <textarea
             type="textarea"
             placeholder="Lover input"
-            value={this.state.Lover}
+            value={this.props.Lover}
             onChange={this.handleChange}
             rows="4"
             name="Lover"

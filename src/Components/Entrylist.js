@@ -3,31 +3,46 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import WarCouncil from "./warcouncil";
 import "./Entrylist.css"
 import { createConfigItem } from "@babel/core";
-
+import Table from 'react-bootstrap/Table';
+import { tsConditionalType } from "@babel/types";
+import Moment from 'react-moment';
+import EntryItem from './entry'
 
 
 class Entrylist extends Component {
     constructor(props) {
     super (props);
+
+    var today = new Date(),
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+
+    
         this.state = {
 
             // Input Data
-            King: "",
-            Warrior: "",
-            Magician: "",
-            Lover: "",
-            submitDate: "",
+            newRoundTable: {
 
+              submitDate: date,
+              Journal : [
+                      King= "",
+                      Warrior = "",
+                      Magician= "",
+                      Lover= ""
+              ]
+          },
+ 
             // Stored Arrays
-                NewEntry: "",
+                Entrys: "",
               
-            
-                newRoundTable: [{submitDate: ""}, {King: ""}, {Warrior: ""}, {Magician: ""}, {Lover: ""}],
               
+                newAnswer:""
           };
         }
     
-       
+      
+
+
         handleChange = (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -40,63 +55,97 @@ class Entrylist extends Component {
           
             await this.setState(
               { 
-              King: this.state.King,
-              Warrior : this.state.Warrior,
-              Magician : this.state.Magician,
-              Lover : this.state.Lover
+              King: this.state.newRoundTable.Journal.King.value,
+              Warrior : this.state.newRoundTable.Journal.Warrior.value,
+              Magician : this.state.newRoundTable.Journal.Magician.value,
+              Lover : this.state.newRoundTable.Journal.Lover.value
               });
               
             await this.setDate(event);
             await this.setArray(event);
-               
+       
                
         // reset input state
-            await this.setState({
-                King : "",
-                Warrior : "",
-                Magician : "",
-                Lover : ""
-                  });
+            // await this.setState({
+            //     King: "",
+            //     Warrior: "",
+            //     Magician: "",
+            //     Lover: ""
+            //       });
                  
             
           }
 
         /* spread opporator. Add data to array*/ 
         
-        setArray = ( event, Date, Answer) => {
+        setArray = ( event, Date) => {
               event.preventDefault()
               event.stopPropagation()
             this.setState({
-              NewEntry : [...this.state.NewEntry, this.state.newRoundTable],
-                }
-            )
-        }
-
-        setDate = (data) => {
-            this.setState({
-            newRoundTable: [{setDate: this.submitDate}, {King: this.state.King}, {Warrior: this.state.Warrior}, { Magician: this.state.Magician}, {Lover: this.state.Lover}],
-            setDate: Date.now()
+              
+              Entrys : Object.assign(this.state.newRoundTable.submitDate, this.state.newRoundTable.Journal)
             })
             
         }
+
+
+
+
+
+//         // Answers = () => { 
+//         //     this.setState({
+//         //     newAnswer: this.state.Entrys.map((number, index) => (<td> {number} </td>))
+//         //     })
+// }
+
+
+        setDate = (data) => {
+            this.setState({
+            newRoundTable: newRoundTable.submitDate,
+            newRoundTable:  newRoundTable.Journal
+           
+            })
+        }
      
-        
-      
+
+
+
 
 
 render () {
+
+  
+  let myItem = this.state.Entrys
+
   
 
-    return (
 
+
+  let displayItem = JSON.stringify(myItem)
+
+    return (
+        
         <div>
             <div className="JournalForm" >
-            <h1>Round Table Entrys</h1>
+           <h1>Round Table Entrys</h1>
+           <p>{displayItem}</p>
             <br></br>
+            <li>
+            
+            </li>
             <div>
-               <ul>
-                    <li>{}</li>
-                      </ul>
+            <Table striped bordered hover size="sm">
+  <thead>
+    <tr >
+      <th className="dateRow">Date</th>
+      <th className="entryRow">Entry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <EntryItem  Entrys={this.state.Entrys}  />
+    </tbody>
+    </Table>
+                
             </div>
 
             {/* <ul>
@@ -117,14 +166,13 @@ render () {
 
         {/* Add componet warcouncil */}
                         <WarCouncil
-                        King = { this.state.King}
-                        Warrior = {this.state.Warrior}
-                        Magician = {this.state.Magician}
-                        Lover = {this.state.Lover}
-                        Date = {this.submitDate}
+                        King = { this.state.newRoundTable.Journal.King.value}
+                        Warrior = {this.state.newRoundTable.Journal.Warrior.value}
+                        Magician = {this.state.newRoundTable.Journal.Magician.value}
+                        Lover = {this.state.newRoundTable.Journal.Lover.value}
+                        // Date = {this.newRoundTable.submitDate}
                         onAnswerChange = {this.handleChange}
                         onAnswerSubmit = {this.handleSubmit}/>
-
 
                     </div>
                 <div className="modal-footer">
