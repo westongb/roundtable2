@@ -23,7 +23,8 @@ class Entrylist extends Component {
         this.state = {
 
             // Input Data
-
+                isLoaded: false,
+                error: null,
                 King: "",
                 Warrior: "",
                 Magician: "",
@@ -45,7 +46,25 @@ class Entrylist extends Component {
           };
         }
     
-      
+        componentDidMount = ()=> {
+          fetch("http://localhost:5000/get")
+    .then(res=> res.json())
+    .then(res=> {
+      this.setState({
+          isLoaded: true,
+          Entrys: res
+          }
+          );
+          console.log(this.state.Entrys)
+  },
+  (error) =>{
+    this.setState({
+      isLoaded: true,
+      error
+    });
+  });
+  
+  }
 
 
         handleChange = (event) => {
@@ -93,40 +112,28 @@ class Entrylist extends Component {
         }
      
 
-
-
-
-
 render () {
-
+ 
   let myItem = this.state.Entrys
 
-  let displayItem = JSON.stringify(myItem)
+  let textItem = Array.from(JSON.stringify(myItem));
 
-  console.log(this.state.newRoundTable.submitDate)
+
+
+  
+ 
     return (
         
         <div>
             <div className="JournalForm" >
            <h1>Round Table Entrys</h1>
-           <p>{displayItem}</p>
+           <p>{textItem}</p>
             <br></br>
             <li>
-            
+              <p>{this.state.setDatesetDate}</p>
             </li>
             <div>
-            <Table striped bordered hover size="sm">
-  <thead>
-    <tr >
-      <th className="dateRow">Date</th>
-      <th className="entryRow">Entry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <EntryItem  Entrys={this.state.Entrys}  />
-    </tbody>
-    </Table>
-                
+                            
             </div>
 
             {/* <ul>
@@ -136,13 +143,13 @@ render () {
                 <li>{this.state.LoverEntry}</li>
             </ul> */}
 
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">New Entry</button>
+            <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">New Entry</button>
             </div>
         
-        <div className="myModal" tabindex="-1" role="dialog">
+        <div className="myModal" tabIndex="-1" role="dialog">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                     <div class="modal-body">
+                     <div className="modal-body">
 
 
         {/* Add componet warcouncil */}
