@@ -16,16 +16,7 @@ class EntryItem extends Component {
 
 render () {
    
-   
-    let item = Array.from(this.props.Entrys)
-    let [JournalEntry] = item
-    let [setDate, Journal] = JournalEntry
-    console.log(JournalEntry)
-
-    // let entryItem = item.map((entryItem) =>
-    //     <tr>
-    //      <td>{setDate}</td>
-    //     <td>{Journal}</td>
+  
     //     </tr>);
 
     

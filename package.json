@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "@primer/octicons-react": "^9.3.1",
     "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
     "moment": "^2.24.0",
+    "mongoose": "^5.8.0",
+    "nodemon": "^2.0.2",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.8.6",
     "react-moment": "^0.9.2",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,5 +37,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/westongb/roundtable2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/westongb/roundtable2/issues"
+  },
+  "homepage": "https://github.com/westongb/roundtable2#readme"
 }
