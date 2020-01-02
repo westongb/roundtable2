@@ -50,7 +50,7 @@ app.post('/post', function(req,res){
 });
 
 app.delete('/:id/delete', function (req, res) {
-  RoundTable.findByIdAndRemove(req.params.id, function (err) {
+  RoundTable.findOneAndDelete(req.params.id, function (err) {
       if (err) return next(err);
       res.send('Deleted successfully!');
   })

@@ -10,11 +10,13 @@ import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Modal from 'react-bootstrap/Button';
 import Popup from './Popup';
 import DeleteButton from './DeleteButton';
+import EntryTable from './Table';
 
 class Entrylist extends Component {
   constructor(props) {
+
   super (props);
-      this.state = {
+      this.state = { 
 
           // Input Data
               error: null,
@@ -23,7 +25,7 @@ class Entrylist extends Component {
               Warrior: "",
               Magician: "",
               Lover:"",
-
+              // arrayIndex: entryId,
               submitDate: "",
               
               showPopup: true,
@@ -62,9 +64,7 @@ class Entrylist extends Component {
    
     }
 
-    deleteUrl = () => {
-        return 'http://localhost:5000/${entryId}/delete'
-    }
+  
 
     delay = () => {
     setTimeout(() => {
@@ -94,11 +94,7 @@ class Entrylist extends Component {
       )
     }
   
-    deleteEntry = () => {
-      fetch(this.deleteUrl, {
-        method: 'Delete',
-      })
-    }
+  
 
 
 
@@ -135,61 +131,12 @@ onClick =(event) => {
   this.getData(event);
 }
 
-render(){
-
-let myItem = this.state.Entrys;
-
-let testItems = JSON.stringify(myItem);
-
-let enrtyId;
-let entrySetDate;
-let entryJournal;
-let displayItem;
-let entryKing;
-let listKing;
-let entryWarrior;
-let listWarrior;
-let entryMagician;
-let listMagician;
-let entryLover;
-let listLover;
-let journalTable;
-let tableItems;
-
-var i;
-for (i = 0; i< myItem.length; i++) {
-  let itemList = myItem[i];
-
-   tableItems = myItem.map( function (item, i){
-    var entryId = item.id;
-    var setDate = item.setDate;
-    var King = item.Journal[0].King;
-    var Warrior = item.Journal[1].Warrior;
-    var Magician = item.Journal[2].Magician;
-    var Lover = item.Journal[3].Lover;
-    
-    
-    
-   return <tr>
-          <td>{setDate}</td>
-          <td>
-              <span id="tableTitle">King:</span> {King} <span> </span>
-              <span id="tableTitle">Warrior:</span>{Warrior} <span> </span> 
-              <span id="tableTitle">Magician:</span>{Magician} <span> </span>
-              <span id="tableTitle">Lover:</span>{Lover}<span> </span>
-        </td>
-        <td id="update-delete">
-          <div>
-          <DeleteButton onClick=''/>
-          <span>  </span>
-          <button><Octicon icon={IssueReopened}/></button>
-          </div>
-        </td>
-         </tr>
-  });
+makeTable = () => {
 
 }
 
+render(){
+  
 
 return (
     <div>
@@ -198,12 +145,16 @@ return (
    <button><Octicon icon={IssueReopened} onclick={this.delay}/></button>
    <br></br>
    <Table>
+     <thead>
      <tr>
        <td>Date</td>
        <td>Journal</td>
        <td></td>
      </tr>
-      {tableItems}
+     </thead>
+     <tbody>
+      <EntryTable  Entrys={this.state.Entrys} showPopup={this.state.delay} />
+      </tbody>
    </Table>
     <br></br>
     <div>  
