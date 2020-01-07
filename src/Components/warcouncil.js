@@ -7,24 +7,97 @@ import { async } from "q";
 class warCouncil extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    let edit = false;
+    if (props.hasOwnProperty("King")){          
 
- 
+      edit=true
+    }
+    this.state = {
+      King: edit?props.King: "",
+      Warrior: edit?props.Warrior:"",
+      Magician: edit?props.Magician: "",
+      Lover: edit?props.Lover:"",
+      Entrys: [],
+      setDate:"",
+      Journal:"",       
+      newEntry:"",
+      entryId: props.entryId,
     };
   }
 
-  handleChange = (event, props) => {
+  
+  sendData = () =>{
+    fetch('http://localhost:5000/post', {
+      method: 'Post',
+      headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+          Journal: this.state.Journal
+    } )})
+    .then(
+      res=> console.log("this Worked")
+    )
+  }
+
+//Post API
+  updateData = () =>{
+    fetch(`http://localhost:5000/${this.state.entryId}/update`, {
+      method: 'Put',
+      headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+          Journal: this.state.Journal
+    } )})
+    .then(
+      res=> console.log("this Worked")
+    )
+  }
+ 
+  handleEntry = (props) =>{
+      if (props.hasOwnProperty("King")){
+        this.updateData()
+      } else {
+        this.sendData()
+      }
+  }
+
+
+
+
+//Clear form after Post
+  clearAnswer =() => {
+    this.setState({
+      King: "",
+      Warrior: "",
+      Magician: "",
+      Lover: "",
+  
+    })
+  }
+
+  
+//Event Handlers
+  handleChange = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    this.props.onAnswerChange(event)
-      }
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-    handleSubmit =  (event, props) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.onAnswerSubmit(event)
-      }
-
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    await this.setState({
+      setDate: this.state.submitDate,
+      Journal: [{King: this.state.King},{Warrior: this.state.Warrior},{Magician:this.state.Magician},{Lover: this.state.Lover}] ,
+      })
+  
+      //Post
+    await this.handleEntry(event);
+    await this.clearAnswer(event);
+    // await this.getData(event);
+   
+    }
 
 
      render() {
@@ -37,13 +110,12 @@ class warCouncil extends Component {
           id="warCouncilForm"
         >
                  
-          
 
           <label>King</label>
           <textarea
             type="textarea"
             placeholder="kings input"
-            value={this.props.King}
+            value={this.state.King}
             onChange={this.handleChange}
             rows="4"
             name="King"
@@ -52,7 +124,7 @@ class warCouncil extends Component {
           <textarea
             type="textarea"
             placeholder="Warrior input"
-            value={this.props.Warrior}
+            value={this.state.Warrior}
             onChange={this.handleChange}
             rows="4"
             name="Warrior"
@@ -61,7 +133,7 @@ class warCouncil extends Component {
           <textarea
             type="textarea"
             placeholder="Magician input"
-            value={this.props.Magician}
+            value={this.state.Magician}
             onChange={this.handleChange}
             rows="4"
             name="Magician"
@@ -70,7 +142,7 @@ class warCouncil extends Component {
           <textarea
             type="textarea"
             placeholder="Lover input"
-            value={this.props.Lover}
+            value={this.state.Lover}
             onChange={this.handleChange}
             rows="4"
             name="Lover"

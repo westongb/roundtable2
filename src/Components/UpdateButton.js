@@ -7,45 +7,37 @@ export default function UpdateButton (props) {
 
     const [deleteEntry, setdeleteEntry] = useState(0);
 
-    const [entryId, setentryId] = useState(props.item);
+    const [entryId, setentryId] = useState(props.entryId);
 
     const [showPopup, setshowPopup] = useState(false);
+
+    const [King, setKing] = useState(props.King)
 
     const handleOpen = () => {
         setshowPopup(true);
       };
 
-     console.log(props.item)
+     
 
 
     const updateEntrly = () => {
         
     }
     
-    const deleteRecord = (event, entryId) => { 
-      // console.log("button works")
-      // return deleteEntry;
-      // function deleteEntry (entryId) {
-        fetch(`http://localhost:5000/${entryId}/delete`, {
-          method: 'Delete',
-        })
-        .then (console.log('has been deleted'))
-    // }
   
-  }
     return (
         <div>
         <button onClick={handleOpen}><Octicon icon={IssueReopened}/></button>
  
    
         {showPopup ?  
-      <Popup className="popup"
+      <Popup className="popup" 
   
-                      
-                    //   King = { this.state.King}
-                    //   Warrior = {this.state.Warrior}
-                    //   Magician = {this.state.Magician}
-                    //   Lover = {this.state.Lover}
+                    entryId = {entryId} 
+                    King = {King}
+                    Warrior = {props.Warrior}
+                    Magician = {props.Magician}
+                    Lover = {props.Lover}
                     //   onAnswerChange = {this.handleChange}
                     //   onAnswerSubmit = {this.handleSubmit}
                       />

@@ -7,9 +7,7 @@ export default function DeleteButton (props) {
     const [deleteEntry, setdeleteEntry] = useState(0);
 
     const [entryId, setentryId] = useState(props.item)
-
-     console.log(props.item)
-    
+   
     const deleteRecord = (event, entryId) => { 
       // console.log("button works")
       // return deleteEntry;
@@ -17,7 +15,9 @@ export default function DeleteButton (props) {
         fetch(`http://localhost:5000/${entryId}/delete`, {
           method: 'Delete',
         })
-        .then (console.log('has been deleted'))
+        .then (console.log('has been deleted')
+            
+        )
     // }
   
   }

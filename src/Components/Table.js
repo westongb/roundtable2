@@ -6,20 +6,17 @@ import UpdateButton from './UpdateButton';
 import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
+import Popup from './Popup';
 
 
 
 export default function EntryTable(props) {
 
-
-
- 
-
 let myItem = props.Entrys;
 
 let testItems = JSON.stringify(myItem);
 
-let entryId;
+let entryId = "";
 let entrySetDate;
 let entryJournal;
 let displayItem;
@@ -37,10 +34,9 @@ let tableItems;
 
 
 var i;
-// for (i = 0; i< myItem.length; i++) {
-//   let itemList = myItem[i];
 
-   tableItems = myItem.map( function (item, i){
+//deconstruct data from Get
+tableItems = myItem.map( function (item, i){
      var itemIndex = item[i];
     var entryId = item._id;
     var setDate = item.setDate;
@@ -48,29 +44,23 @@ var i;
     var Warrior = item.Journal[1].Warrior;
     var Magician = item.Journal[2].Magician;
     var Lover = item.Journal[3].Lover;
-    
-    
-
-    
-
   
 
-    // console.log(deleteclick);
     
+    //Arrange data into Table
    return (<tr>
-        <td>{i}</td>
-          <td>{setDate}</td>
-          <td>
-              <span id="tableTitle">King:</span> {King} <span> </span>
-              <span id="tableTitle">Warrior:</span>{Warrior} <span> </span> 
-              <span id="tableTitle">Magician:</span>{Magician} <span> </span>
-              <span id="tableTitle">Lover:</span>{Lover}<span> </span>
-        </td>
+            <td>{setDate}</td>
+            <td>
+                    <span id="tableTitle">King:</span> {King} <span> </span>
+                    <span id="tableTitle">Warrior:</span>{Warrior} <span> </span> 
+                    <span id="tableTitle">Magician:</span>{Magician} <span> </span>
+                    <span id="tableTitle">Lover:</span>{Lover}<span> </span>
+            </td>
         <td id="update-delete">
           <div>
-          <DeleteButton item={i} />
+          <DeleteButton item={i}/>
           <span>  </span>
-          <UpdateButton item={i}/>
+          <Popup entryId={entryId} item={i} King={King} Warrior={Warrior} Magician={Magician} Lover={Lover}/>
           </div>
         </td>
          </tr>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import WarCouncil from "./warcouncil";
 import "./Entrylist.css";
@@ -34,6 +34,7 @@ class Entrylist extends Component {
                 setDate:"",
                 Journal:"",       
               newEntry:"",
+              Open: "",
         }
       } 
   
@@ -44,25 +45,25 @@ class Entrylist extends Component {
 
   //Event Handlers
 
-  handleChange = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    this.setState({ [event.target.name]: event.target.value });
-  }
+  // handleChange = (event) => {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   this.setState({ [event.target.name]: event.target.value });
+  // }
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    await this.setState({
-      setDate: this.state.submitDate,
-      Journal: [{King: this.state.King},{Warrior: this.state.Warrior},{Magician:this.state.Magician},{Lover: this.state.Lover}] ,
-      })
+  // handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   await this.setState({
+  //     setDate: this.state.submitDate,
+  //     Journal: [{King: this.state.King},{Warrior: this.state.Warrior},{Magician:this.state.Magician},{Lover: this.state.Lover}] ,
+  //     })
   
-    await this.sendData(event);
-    await this.delay(event);
-    await this.clearAnswer(event);
-    // await this.getData(event);
+  //   await this.sendData(event);
+  //   await this.delay(event);
+  //   await this.clearAnswer(event);
+  //   // await this.getData(event);
    
-    }
+  //   }
 
   
 
@@ -80,19 +81,7 @@ class Entrylist extends Component {
       });  
     } 
 
-    sendData = () =>{
-      fetch('http://localhost:5000/post', {
-        method: 'Post',
-        headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-            Journal: this.state.Journal
-      } )})
-      .then(
-        res=> console.log("this Worked")
-      )
-    }
+
   
   
 
@@ -117,23 +106,17 @@ error
 });
   }
 
-clearAnswer =() => {
-  this.setState({
-    King: "",
-    Warrior: "",
-    Magician: "",
-    Lover: "",
 
-  })
-}
+
+handleOpen = () => {
+  this.setState({
+    Open: true});
+};
 
 onClick =(event) => {
   this.getData(event);
 }
 
-makeTable = () => {
-
-}
 
 render(){
   
@@ -144,28 +127,28 @@ return (
    <h1>Round Table Entrys</h1>
    <button><Octicon icon={IssueReopened} onclick={this.delay}/></button>
    <br></br>
-   <Table>
-     <thead>
-     <tr>
-       <td>Date</td>
-       <td>Journal</td>
-       <td></td>
-     </tr>
-     </thead>
-     <tbody>
-      <EntryTable  Entrys={this.state.Entrys} showPopup={this.state.delay} />
-      </tbody>
-   </Table>
+      <Table>
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>Journal</td>
+            <td></td>
+          </tr>
+        </thead>
+            <tbody>
+              <EntryTable  Entrys={this.state.Entrys} showPopup={this.state.delay} />
+            </tbody>
+      </Table>
     <br></br>
-    <div>  
-                     
+    <div>       
     </div>
     {/* <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onClick={this.togglePopup.bind(this)}>New Entry</button> */}
         </div>
         {this.state.showPopup ?  
       <Popup className="popup"
   
-                      
+                      item = ""
+                      entryId = ""
                       King = { this.state.King}
                       Warrior = {this.state.Warrior}
                       Magician = {this.state.Magician}
@@ -177,7 +160,6 @@ return (
     : null  
     }
     <div>
-   
     </div>  
     </div>
 

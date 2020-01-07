@@ -50,12 +50,23 @@ app.post('/post', function(req,res){
 });
 
 app.delete('/:id/delete', function (req, res) {
-  RoundTable.findOneAndDelete(req.params.id, function (err) {
+  RoundTable.findOneAndUpdate(req.params.id, function (err) {
+      setDate: req.body.setDate,
+      Journal: req.body.Journal
       if (err) return next(err);
       res.send('Deleted successfully!');
   })
 }
 );
+
+app.put('/update/:id', function (req, res) {
+  RoundTable.findOne(req.params.id, function (err) {
+    if (err) return next(err);
+    res.send('Deleted successfully!');
+                                                 })
+}
+)
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
