@@ -21,7 +21,8 @@ class warCouncil extends Component {
       setDate:"",
       Journal:"",       
       newEntry:"",
-      entryId: props.entryId,
+      entryId: edit?props.entryId: "",
+      update:edit?true: false
     };
   }
 
@@ -42,7 +43,8 @@ class warCouncil extends Component {
 
 //Post API
   updateData = () =>{
-    fetch(`http://localhost:5000/${this.state.entryId}/update`, {
+    const entryId = this.state.entryId
+    fetch(`http://localhost:5000/update/${entryId}`, {
       method: 'Put',
       headers: {
         'Content-Type': 'application/json'
@@ -55,9 +57,9 @@ class warCouncil extends Component {
     )
   }
  
-  handleEntry = (props) =>{
-      if (props.hasOwnProperty("King")){
-        this.updateData()
+  handleEntry = (props, edit) =>{
+      if (this.state.update === true){
+        this.updateData(this.state.entryId)
       } else {
         this.sendData()
       }
@@ -99,8 +101,10 @@ class warCouncil extends Component {
    
     }
 
+  
 
      render() {
+       console.log(this.state.update);
     return (
       <div className="warCouncil">
         <h1>War Council</h1>

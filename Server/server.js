@@ -49,24 +49,24 @@ app.post('/post', function(req,res){
 })
 });
 
-app.delete('/:id/delete', function (req, res) {
-  RoundTable.findOneAndUpdate(req.params.id, function (err) {
-      setDate: req.body.setDate,
-      Journal: req.body.Journal
+app.delete('/delete/id', function (req, res) {
+  RoundTable.findByIdAndDelete(req.params.RoundTableId, (err) => {
       if (err) return next(err);
-      res.send('Deleted successfully!');
+      res.send('Deleted successfully!' + err);
   })
-}
-);
+});
 
-app.put('/update/:id', function (req, res) {
-  RoundTable.findOne(req.params.id, function (err) {
-    if (err) return next(err);
-    res.send('Deleted successfully!');
-                                                 })
-}
-)
-
+app.put('/update/id', function (req, res) {
+  RoundTable.findByIdAndUpdate(req.params.RoundTableId, (err, RoundTable) => {
+    if (err) {
+      console.log(err)
+      
+    } else {
+    RoundTable.Journal = req.body.Journal,
+    res.send('update successfully!');
+    } 
+  }
+);})
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

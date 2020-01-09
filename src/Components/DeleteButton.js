@@ -4,25 +4,19 @@ import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 
 export default function DeleteButton (props) {
 
-    const [deleteEntry, setdeleteEntry] = useState(0);
-
     const [entryId, setentryId] = useState(props.item)
-   
+
     const deleteRecord = (event, entryId) => { 
-      // console.log("button works")
-      // return deleteEntry;
-      // function deleteEntry (entryId) {
-        fetch(`http://localhost:5000/${entryId}/delete`, {
-          method: 'Delete',
+    
+        fetch(`http://localhost:5000/delete/${entryId}`, {
+          method: 'Delete'
         })
-        .then (console.log('has been deleted')
+        .then (console.log('has been deleted' + "" + entryId)
             
         )
-    // }
-  
   }
-    return (
-    <button onClick={deleteRecord}><Octicon icon={Trashcan}  /></button>
+   return (
+    <button onClick={(event) => deleteRecord(event,entryId)}><Octicon icon={Trashcan} /></button>
     )
 }
 

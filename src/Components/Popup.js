@@ -12,6 +12,8 @@ export default function SimpleModal(props) {
 
   const [King, setKing] = useState(edit?props.King: "")
 
+  const [isLoaded, setIsLoaded] = useState(false)
+
   // Component Life Cycle
  
   const [entryId, setentryId] = useState(props.entryId)
@@ -56,7 +58,24 @@ export default function SimpleModal(props) {
     },
   }));
   
- 
+  
+const getData = () => {
+  fetch("http://localhost:5000/get" , {
+    method: "GET"
+  })
+.then(res=> res.json())
+.then(res=> {
+  setIsLoaded(true)
+},
+(error) =>{
+this.setState({
+isLoaded: true,
+error
+});
+});
+}
+
+
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -68,6 +87,7 @@ export default function SimpleModal(props) {
   
     const handleClose = () => {
       setOpen(false);
+      getData();
     };
 
  
@@ -123,7 +143,7 @@ export default function SimpleModal(props) {
 
 {/* Add componet warcouncil */}
 <WarCouncil
-                      
+                      entryId = {props.entryId}
                       King = { props.King}
                       Warrior = {props.Warrior}
                       Magician = {props.Magician}

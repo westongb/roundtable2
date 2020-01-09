@@ -58,7 +58,7 @@ tableItems = myItem.map( function (item, i){
             </td>
         <td id="update-delete">
           <div>
-          <DeleteButton item={i}/>
+          <DeleteButton item={entryId}/>
           <span>  </span>
           <Popup entryId={entryId} item={i} King={King} Warrior={Warrior} Magician={Magician} Lover={Lover}/>
           </div>
