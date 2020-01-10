@@ -4,12 +4,11 @@ const mongoose = require('mongoose');
 const RoundTable = require('./Models/Entryschema');
 const nodmon = require('nodemon');
 const cors = require('cors')
-// const mongodb = context.services.get("mongodb-atlas");
-// const JournalEntry = mongodb.db("mature-masculinity").collection("RoundTable");
+
 const app = express();
 const port = process.env.PORT || 5000;
 
-mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },{ useFindAndModify: false });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -48,14 +47,16 @@ db.once('open', function () {
     })
   });
 
-  app.put('/update/:id', function (req, res) {
-    console.log(req.body.Journal)
-    RoundTable.findByIdAndUpdate(req.param.id, 
-      Journal= req.body.Journal,
-      
-         (err) => {if (err) return next(err);
+  function updateError() {
+      if (err) return next(err);
       res.send('Update successfully!');
-      }
+  }
+
+
+  app.put('/update/:id', (req, res) => {
+    RoundTable.findByIdAndUpdate(req.param.id,
+      {$set:{Journal: req.body.Journal}},
+      updateError(err)
   )}
   );
 
