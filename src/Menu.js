@@ -13,7 +13,6 @@ class Menu extends Component {
   }
 
   render() {
-    console.log (this.answerIsThere)
     return (
       <Router>
         <div className="Menu">

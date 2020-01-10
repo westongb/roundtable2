@@ -12,7 +12,6 @@ export default function DeleteButton (props) {
           method: 'Delete'
         })
         .then (console.log('has been deleted' + "" + entryId)
-            
         )
   }
    return (

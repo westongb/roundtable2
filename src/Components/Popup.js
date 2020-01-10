@@ -59,21 +59,7 @@ export default function SimpleModal(props) {
   }));
   
   
-const getData = () => {
-  fetch("http://localhost:5000/get" , {
-    method: "GET"
-  })
-.then(res=> res.json())
-.then(res=> {
-  setIsLoaded(true)
-},
-(error) =>{
-this.setState({
-isLoaded: true,
-error
-});
-});
-}
+
 
 
     const classes = useStyles();
@@ -87,7 +73,7 @@ error
   
     const handleClose = () => {
       setOpen(false);
-      getData();
+      
     };
 
  
