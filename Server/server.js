@@ -47,29 +47,37 @@ db.once('open', function () {
     })
   });
 
-  function updateError() {
-      if (err) return next(err);
-      res.send('Update successfully!');
-  }
+  app.put('/update/:id', (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
+    {$set: req.body } ,
+    (err,RoundTable) => {
+      console.log(req.body)
+      if(err) return (err);
+      res.send('RoundTable Updated' + req.body)
+    }
+    ))
 
 
-  app.put('/update/:id', (req, res) => {
-    RoundTable.findByIdAndUpdate(req.param.id,
-      {$set:{Journal: req.body.Journal}},
-      updateError(err)
-  )}
-  );
+
+//   app.put('/update/:id', async(req, res) => {
+//     await RoundTable.updateOne({id:req.param.id},
+//       {Journal: req.body.Journal},
+// ).catch(err => console.log(err));
+// res.status(201).json({
+//   message: "Handling Post"
+// })
+// const doc = await RoundTable.findOne();
+// doc.Journal;
+// console.log(doc.Journal)
+// })
+
+
 
 app.delete('/delete/:id', function (req, res) {
-  console.log(req.params.id)
   RoundTable.findByIdAndDelete(req.params.id, (err) => {
     if (err) return next(err);
     res.send('Deleted successfully!' + err);
   })
 });
-
-
-
 
 
 })
