@@ -56,22 +56,6 @@ db.once('open', function () {
     }
     ))
 
-
-
-//   app.put('/update/:id', async(req, res) => {
-//     await RoundTable.updateOne({id:req.param.id},
-//       {Journal: req.body.Journal},
-// ).catch(err => console.log(err));
-// res.status(201).json({
-//   message: "Handling Post"
-// })
-// const doc = await RoundTable.findOne();
-// doc.Journal;
-// console.log(doc.Journal)
-// })
-
-
-
 app.delete('/delete/:id', function (req, res) {
   RoundTable.findByIdAndDelete(req.params.id, (err) => {
     if (err) return next(err);

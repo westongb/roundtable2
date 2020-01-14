@@ -3,8 +3,14 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import InputField from "./FormInput";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import './Story.css';
 
 export default function Story() {
+
+
+  const  [story, setStory] = useState("");
+
+
 
   
     return (<div>
@@ -12,12 +18,15 @@ export default function Story() {
         <form className='storyform' noValidate autoComplete="off">
         <TextField
           id="standard-multiline-flexible"
+          className='storyField'
           label="Multiline"
           multiline
-          rowsMax="4"
-        //   value={value}
-        //   onChange={handleChange}
+          rowsMax="40"
+          value={story}
+          onChange={e => setStory(e.target.value)}
         />
+        <br></br>
+        <button>Submit</button>
         </form>
     </div>
 

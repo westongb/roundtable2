@@ -1,3 +1,12 @@
-#classform{
-    
+.storyform{
+    height: 1000px;
+    width: 80%;
+    background-color: tan;
+    margin-left: 10%;
+    padding-left: 2%;
+}
+
+.storyField  {
+    width: 90%;
+    margin-left: 10%;
 }
