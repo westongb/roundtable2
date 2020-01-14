@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import InputField from "./FormInput";
+import InputField from "../FormInput";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './Story.css';
@@ -28,6 +28,7 @@ export default function Story() {
         <br></br>
         <button>Submit</button>
         </form>
+        <p></p>
     </div>
 
     )

@@ -4,7 +4,7 @@ import WarCouncil from "./warcouncil";
 import "./Entrylist.css";
 import { createConfigItem } from "@babel/core";
 import Moment from 'react-moment';
-import EntryItem from './entry';
+import EntryItem from '../entry';
 import Table from "react-bootstrap/Table";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Modal from 'react-bootstrap/Button';

@@ -3,10 +3,10 @@ import { exportAllDeclaration } from "@babel/types";
 import "./Menu.css";
 import Home from "./Components/Home";
 import about from "./Components/about";
-import Entrylist from "./Components/Entrylist"
+import Entrylist from "./Components/roundtable/Entrylist"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Roundtable from "./Components/warcouncil";
-import Story from "./Components/Story"
+import Roundtable from "./Components/roundtable/warcouncil";
+import Story from "./Components/Story/Story"
 
 class Menu extends Component {
   constructor(props) {
