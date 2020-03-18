@@ -94,6 +94,7 @@ getData = () => {
 .then(res=> res.json())
 .then(res=> {
 this.setState({
+  
     isLoaded: true,
     Entrys: res
     });

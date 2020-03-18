@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 
 const storySchema = mongoose.Schema({
     _id:  mongoose.Schema.Types.ObjectId,
-    date: Date,
+    date: {
+        type: Date,
+        default: Date.now,
+        required: true
+    },
     story: {
-        type: Text,
+        type: String,
         require: true
     }
 

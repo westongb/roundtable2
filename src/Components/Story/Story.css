@@ -1,12 +1,14 @@
 .storyform{
-    height: 1000px;
+    height: 90%;
     width: 80%;
     background-color: tan;
     margin-left: 10%;
     padding-left: 2%;
+    margin-top:5%;
 }
 
 .storyField  {
     width: 90%;
+    height: 600px;
     margin-left: 10%;
 }

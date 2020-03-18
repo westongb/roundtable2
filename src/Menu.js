@@ -7,6 +7,7 @@ import Entrylist from "./Components/roundtable/Entrylist"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Roundtable from "./Components/roundtable/warcouncil";
 import Story from "./Components/Story/Story"
+import storyList from "./Components/Story/storyList";
 
 class Menu extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Menu extends Component {
         <Route path="/Home" exact component={Home}  />
         <Route path="/about" exact component={about} />
         <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
-        <Route path="/story" exact component={Story}/>
+        <Route path="/story" exact component={storyList}/>
         {/* <Route path="/roundtable" exact component={Roundtable} /> */}
         </Router>
     );
