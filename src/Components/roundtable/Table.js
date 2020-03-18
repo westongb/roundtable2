@@ -51,10 +51,12 @@ tableItems = myItem.map( function (item, i){
    return (<tr>
             <td>{setDate}</td>
             <td>
-                    <span id="tableTitle">King:</span> {King} <span> </span>
-                    <span id="tableTitle">Warrior:</span>{Warrior} <span> </span> 
-                    <span id="tableTitle">Magician:</span>{Magician} <span> </span>
-                    <span id="tableTitle">Lover:</span>{Lover}<span> </span>
+              <ul>
+                    <li><span id="tableTitle">King:</span> {King} <span><input type="checkbox"/>  </span></li>
+                    <li> <span id="tableTitle">Warrior:</span>{Warrior} <span> <input type="checkbox" /></span> </li>
+                    <li><span id="tableTitle">Magician:</span>{Magician} <span>  <input type="checkbox" /></span></li>
+                    <li> <span id="tableTitle">Lover:</span>{Lover}<span> <input type="checkbox" /> </span></li>
+                    </ul>
             </td>
         <td id="update-delete">
           <div>
