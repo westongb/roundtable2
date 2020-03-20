@@ -48,16 +48,18 @@ tableItems = myItem.map( function (item, i){
 
     
     //Arrange data into Table
-   return (<tr>
+   return (
+     <div className="entryTable">
             <td>{setDate}</td>
             <td>
-              <ul>
-                    <li><span id="tableTitle">King:</span> {King} <span><input type="checkbox"/>  </span></li>
-                    <li> <span id="tableTitle">Warrior:</span>{Warrior} <span> <input type="checkbox" /></span> </li>
-                    <li><span id="tableTitle">Magician:</span>{Magician} <span>  <input type="checkbox" /></span></li>
-                    <li> <span id="tableTitle">Lover:</span>{Lover}<span> <input type="checkbox" /> </span></li>
+              <ul >
+                    <li><span id="tableTitle">King:</span> {King} <span><input id="checkbox" type="checkbox"/>  </span></li>
+                    <li> <span id="tableTitle">Warrior:</span>{Warrior} <span> <input id="checkbox" type="checkbox" /></span> </li>
+                    <li><span id="tableTitle">Magician:</span>{Magician} <span>  <input id="checkbox" type="checkbox" /></span></li>
+                    <li> <span id="tableTitle">Lover:</span>{Lover}<span> <input id="checkbox" type="checkbox" /> </span></li>
                     </ul>
             </td>
+           
         <td id="update-delete">
           <div>
           <DeleteButton item={entryId}/>
@@ -65,7 +67,7 @@ tableItems = myItem.map( function (item, i){
           <Popup entryId={entryId} item={i} King={King} Warrior={Warrior} Magician={Magician} Lover={Lover}/>
           </div>
         </td>
-         </tr>
+        </div>
          )
   });
 

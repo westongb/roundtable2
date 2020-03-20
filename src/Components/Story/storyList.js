@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 export default function StoryList () {
     useEffect(() => {
         getStory();
+
     },[]);
 
     const [stories, setStories] = useState("")
@@ -48,7 +49,9 @@ export default function StoryList () {
         fetch(`http://localhost:5000/story/delete/${storyId}`, {
             method: "Delete"
           }).then (console.log('has been deleted' + " " + storyId),
-          ).then(useEffect)
+          ).then( () => {
+    window.location.reload(false);
+  })
     }
 
   const  togglePopup = () => {  

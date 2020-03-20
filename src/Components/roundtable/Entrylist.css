@@ -9,3 +9,15 @@
 tbody{
     width: 90%;
 }
+
+#checkbox{
+    height: 15px;
+}
+
+ul{
+    list-type: none;
+}
+
+.entryTable{
+    width: 1000px;
+}

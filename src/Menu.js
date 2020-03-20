@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Roundtable from "./Components/roundtable/warcouncil";
 import Story from "./Components/Story/Story"
 import storyList from "./Components/Story/storyList";
+import LoginScreen from "./Components/Authentication/LoginScreen";
+import CreateUser from "./Components/Authentication/CreateUser";
 
 class Menu extends Component {
   constructor(props) {
@@ -18,13 +20,14 @@ class Menu extends Component {
     return (
       <Router>
         <div className="Menu">
-          <h2>Kings Table</h2>
+          <h2>King of the Kingdome</h2>
           <nav>
             <span className="menuItems">
-              <Link to="/about">About</Link>
               <Link to="/Home">Home</Link>
               <Link to= "/roundtableapp/Entrylist">Round Table</Link>
               <Link to='/story'>Story</Link>
+              <Link to='/login'>Login</Link>
+              {/* <Link to="/about">About</Link> */}
             </span>
             <div>{this.answerIsThere}</div>
           </nav>
@@ -34,6 +37,8 @@ class Menu extends Component {
         <Route path="/about" exact component={about} />
         <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
         <Route path="/story" exact component={storyList}/>
+        <Route path="/login" exact component={LoginScreen}/>
+        <Route path="/login/createUser" exact component={CreateUser}/>
         {/* <Route path="/roundtable" exact component={Roundtable} /> */}
         </Router>
     );

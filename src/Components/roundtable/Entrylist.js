@@ -133,11 +133,12 @@ return (
           <tr>
             <td>Date</td>
             <td>Journal</td>
-            <td></td>
           </tr>
         </thead>
-            <tbody>
-              <EntryTable  Entrys={this.state.Entrys} showPopup={this.state.delay} />
+            <tbody >
+              
+              <EntryTable Entrys={this.state.Entrys} showPopup={this.state.delay} />
+              
             </tbody>
       </Table>
     <br></br>
