@@ -20,7 +20,7 @@ class Menu extends Component {
     return (
       <Router>
         <div className="Menu">
-          <h2>King of the Kingdome</h2>
+          <h2>King of the Kingdom</h2>
           <nav>
             <span className="menuItems">
               <Link to="/Home">Home</Link>

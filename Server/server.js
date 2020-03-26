@@ -8,6 +8,8 @@ const storyschema = require('./Models/Storyschema');
 var Schema = mongoose.Schema;
 const app = express();
 const port = process.env.PORT || 5000;
+const Userschema = require('./Models/Userschema');
+const bcrypt = require("bcryptjs");
 
 mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },{ useFindAndModify: false });
 
@@ -111,7 +113,63 @@ app.delete('/story/delete/:id', function (req, res) {
     }
     ))
 
+    app.post('/UserInfo/new', async function (req, res) {
+      const hashedPassword =  await bcrypt.hash(req.body.Password, 10);
+      console.log(hashedPassword);
+      const NewUser = new Userschema({
+        _id: mongoose.Types.ObjectId(),
+        firstName : req.body.FirstName,
+        lastName: req.body.LastName,
+        emailAddress: req.body.EmailAddress,
+        userName: req.body.UserName,
+        password: hashedPassword
+      })
+  
+      NewUser.save().then(result => {
+        console.log(result);
+      })
+        .catch(err => console.log(err));
+      res.status(201).json({
+        message: "Handling Post"
+      })
+    });
 
+
+  //user authentication
+
+app.post('/login/:userName', async (req, res, next) => {
+  const errors = username(req)
+  if (!errors.isEmpty()) {
+      return res.status(400).json({
+          errors: errors.array()
+      })
+  }
+  try {
+  //find user   
+  let user = await userschema.find({"userName": req.params.userName}).next(
+       async function  (err, user) {
+         
+      if (!err) {
+          //compare passwords using bcrypt
+          await bcrypt.compare(req.body.password, user.Password, function (err, result) {
+              if (result === true) {
+                 const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '36000s'})
+                res.send({'TokenAuth': accessToken})
+              } else {
+                  res.send('Incorrect password');
+      
+              }});
+      } else {
+              console.log(err)
+      }
+  })
+  } catch (errors) {
+      console.error(errors);
+      res.status(500).json({
+          message: "Server Error"
+      })
+  }
+});  
    
 // app.delete('/delete/story/:id', function (req, res) {
 //   RoundTable.findByIdAndDelete(req.params.id, (err) => {
