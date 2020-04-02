@@ -1,3 +1,4 @@
+require('dotenv').config({path:'../.env'});
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,7 +10,9 @@ var Schema = mongoose.Schema;
 const app = express();
 const port = process.env.PORT || 5000;
 const Userschema = require('./Models/Userschema');
+const { check, validationResult} = require("express-validator/check");
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 
 mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },{ useFindAndModify: false });
 
@@ -23,7 +26,7 @@ db.once('open', function () {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cors());
 
-  app.get("/get", function (req, res) {
+  app.get("/get", verifyToken, function (req, res) {
     const docs = RoundTable.find({}, function (
       err, data) {
       if (err) {
@@ -50,7 +53,7 @@ db.once('open', function () {
     })
   });
 
-  app.put('/update/:id', (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
+  app.put('/update/:id', verifyToken, (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
     {$set: req.body } ,
     (err,RoundTable) => {
       console.log(req.body)
@@ -59,7 +62,7 @@ db.once('open', function () {
     }
     ))
 
-app.delete('/delete/:id', function (req, res) {
+app.delete('/delete/:id', verifyToken, function (req, res) {
   RoundTable.findByIdAndDelete(req.params.id, (err) => {
     if (err) return next(err);
     res.send('Deleted successfully!' + err);
@@ -67,7 +70,7 @@ app.delete('/delete/:id', function (req, res) {
 });
 
 
-app.delete('/story/delete/:id', function (req, res) {
+app.delete('/story/delete/:id',verifyToken, function (req, res) {
   console.log(req.params.id)
   storyschema.findByIdAndDelete(req.params.id, (err) => {
     if (err) return next(err);
@@ -77,7 +80,7 @@ app.delete('/story/delete/:id', function (req, res) {
 
 
 
-  app.get("/story/get", function (req, res) {
+  app.get("/story/get", verifyToken, function (req, res) {
     const docs = storyschema.find({}, function (
       err, data) {
       if (err) {
@@ -88,7 +91,7 @@ app.delete('/story/delete/:id', function (req, res) {
     });
   });
 
-  app.post('/story', function (req, res) {
+  app.post('/story', verifyToken, function (req, res) {
     const NewEntry = new storyschema({
       _id: mongoose.Types.ObjectId(),
       date: req.body.date,
@@ -104,7 +107,7 @@ app.delete('/story/delete/:id', function (req, res) {
     })
   });
 
-  app.put('/update/story/:id', (req, res) => storyschema.findByIdAndUpdate(req.params.id, 
+  app.put('/update/story/:id',verifyToken, (req, res) => storyschema.findByIdAndUpdate(req.params.id, 
     {$set: req.body } ,
     (err,storyschema) => {
       console.log(req.body)
@@ -137,8 +140,11 @@ app.delete('/story/delete/:id', function (req, res) {
 
   //user authentication
 
-app.post('/login/:userName', async (req, res, next) => {
-  const errors = username(req)
+app.post('/login/:userName', async(req, res, next) => {
+  // console.log(req.params.userName)
+  
+  const errors = validationResult(req)
+  
   if (!errors.isEmpty()) {
       return res.status(400).json({
           errors: errors.array()
@@ -146,21 +152,21 @@ app.post('/login/:userName', async (req, res, next) => {
   }
   try {
   //find user   
-  let user = await userschema.find({"userName": req.params.userName}).next(
-       async function  (err, user) {
-         
+  let user = await Userschema.find({"userName": req.params.userName}).exec(
+       async  (err, user) => {
       if (!err) {
           //compare passwords using bcrypt
-          await bcrypt.compare(req.body.password, user.Password, function (err, result) {
+          console.log(user[0].password)
+          await bcrypt.compare(req.body.password, user[0].password, function (err, result) {
               if (result === true) {
-                 const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '36000s'})
+                 const accessToken = jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '36000s'})
                 res.send({'TokenAuth': accessToken})
               } else {
                   res.send('Incorrect password');
       
               }});
       } else {
-              console.log(err)
+              console.log("didn't work")
       }
   })
   } catch (errors) {
@@ -171,14 +177,27 @@ app.post('/login/:userName', async (req, res, next) => {
   }
 });  
    
+//verify token
+
+function verifyToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+ const token = authHeader && authHeader.split(" ")[1]
+ if (token == null) return res.sendStatus(401)
+
+ jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+     if (err) return res.sendStatus(403)
+     req.user = user
+     next()
+ })
+}
+
+
 // app.delete('/delete/story/:id', function (req, res) {
 //   RoundTable.findByIdAndDelete(req.params.id, (err) => {
 //     if (err) return next(err);
 //     res.send('Deleted successfully!' + err);
 //   })
 // });
-
-
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

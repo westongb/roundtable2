@@ -3,12 +3,15 @@
     width: 100%;
    justify-content: space-between;
    background-color: moccasin;
+   height: 70px; 
 }
 
 h2{
-    padding-right: 20%;
+    padding-right: 10%;
     padding-left:3%;
     background-color: moccasin;
+    height: 50px;
+
 }
 
 .menuItems{

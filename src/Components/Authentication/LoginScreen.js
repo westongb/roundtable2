@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './loginScreen.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateUser from "./CreateUser";
+import {UserContext } from "./isAuthenticated";
+
+
 
 
 export default function LoginScreen(){
 
+const {veryifyUser, setVerifiedUser} = useContext(UserContext);
 
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
 
 
-function veryifyUser(res){
+const veryifyLogin= (res) => {
     fetch(`http://localhost:5000/login/${userName}`, {
         method: "POST",
         headers: {
@@ -22,15 +26,22 @@ function veryifyUser(res){
             password: password
         })
         
-    }).then(
-        res=> console.log("this Worked")
+    }).then( 
+        res => res.json()
+    ).then(
+        data => 
+            console.log(data)
+           
+        
+        setVerifiedUser(data)
     )
+       
 }
 
 
 const submitHandler = (event) =>{
     event.preventDefault()
-    veryifyUser(event)
+    veryifyLogin(event)
 }
 
 return (

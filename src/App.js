@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { createContext} from "react";
 
 import "./App.css";
 import Menu from "./Menu";
@@ -9,13 +9,12 @@ import Journal from "./Components/JournalEntree";
 import Roundtable from "./Components/roundtable/warcouncil";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends Component {
-state = {
- 
-}
+
+export default function App() {
 
 
-  render(props) {
+
+
     return (
       <div>
         <Router>
@@ -31,5 +30,4 @@ state = {
       </div>
     );
   }
-}
-export default App;
+

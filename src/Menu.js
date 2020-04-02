@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useMemo, useState } from "react";
 import { exportAllDeclaration } from "@babel/types";
 import "./Menu.css";
 import Home from "./Components/Home";
@@ -10,13 +10,15 @@ import Story from "./Components/Story/Story"
 import storyList from "./Components/Story/storyList";
 import LoginScreen from "./Components/Authentication/LoginScreen";
 import CreateUser from "./Components/Authentication/CreateUser";
+import {UserContext} from './Components/Authentication/isAuthenticated';
 
-class Menu extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Menu() {
 
-  render() {
+    const [verifiedUser, setVerifiedUser] = useState(null);
+
+    const providerValue = useMemo(()=> ({verifiedUser,setVerifiedUser}), [verifiedUser, setVerifiedUser])
+
+ 
     return (
       <Router>
         <div className="Menu">
@@ -29,20 +31,21 @@ class Menu extends Component {
               <Link to='/login'>Login</Link>
               {/* <Link to="/about">About</Link> */}
             </span>
-            <div>{this.answerIsThere}</div>
+            <div>{}</div>
           </nav>
         </div>
-
-        <Route path="/Home" exact component={Home}  />
-        <Route path="/about" exact component={about} />
-        <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
-        <Route path="/story" exact component={storyList}/>
-        <Route path="/login" exact component={LoginScreen}/>
-        <Route path="/login/createUser" exact component={CreateUser}/>
-        {/* <Route path="/roundtable" exact component={Roundtable} /> */}
+        <UserContext.Provider value={verifiedUser, setVerifiedUser}>
+          <Route path="/Home" exact component={Home}  />
+          <Route path="/about" exact component={about} />
+          <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
+          <Route path="/story" exact component={storyList}/>
+          <Route path="/login" exact component={LoginScreen}/>
+          <Route path="/login/createUser" exact component={CreateUser}/>
+          {/* <Route path="/roundtable" exact component={Roundtable} /> */}
+        </UserContext.Provider>
         </Router>
     );
   }
-}
 
-export default Menu;
+
+
