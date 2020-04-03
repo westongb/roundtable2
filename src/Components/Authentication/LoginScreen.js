@@ -7,9 +7,10 @@ import {UserContext } from "./isAuthenticated";
 
 
 
-export default function LoginScreen(){
 
-const {veryifyUser, setVerifiedUser} = useContext(UserContext);
+export default function LoginScreen(props){
+
+const [veryifyUser, setVerifiedUser] = useState("");
 
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
@@ -29,20 +30,33 @@ const veryifyLogin= (res) => {
     }).then( 
         res => res.json()
     ).then(
-        data => 
-            console.log(data)
-           
+        function (data) {
+            let loginResponse = data;
+            if(loginResponse=== null){
+                setVerifiedUser('incorrect password')
+            } else {
+                setVerifiedUser(userName)
+            }
+        }
         
-        setVerifiedUser(data)
+    ).then(
+        props.handleUser(veryifyUser)
     )
-       
-}
 
+}
 
 const submitHandler = (event) =>{
     event.preventDefault()
     veryifyLogin(event)
 }
+
+
+const isVerified = (props) =>{
+  
+}
+
+
+
 
 return (
     <div className='loginBox'>

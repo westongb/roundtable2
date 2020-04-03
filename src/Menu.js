@@ -14,9 +14,13 @@ import {UserContext} from './Components/Authentication/isAuthenticated';
 
 export default function Menu() {
 
-    const [verifiedUser, setVerifiedUser] = useState(null);
+    const [user, setUser] = useState(null);
 
-    const providerValue = useMemo(()=> ({verifiedUser,setVerifiedUser}), [verifiedUser, setVerifiedUser])
+    const handleUser =  event => {
+      setUser(event.target.value)
+    }
+
+    // const providerValue = useMemo(()=> ({verifiedUser,setVerifiedUser}), [verifiedUser, setVerifiedUser])
 
  
     return (
@@ -34,12 +38,12 @@ export default function Menu() {
             <div>{}</div>
           </nav>
         </div>
-        <UserContext.Provider value={verifiedUser, setVerifiedUser}>
+        <UserContext.Provider value={user}>
           <Route path="/Home" exact component={Home}  />
           <Route path="/about" exact component={about} />
           <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
           <Route path="/story" exact component={storyList}/>
-          <Route path="/login" exact component={LoginScreen}/>
+          <Route path="/login" exact render={()=> <LoginScreen handleUser={handleUser}/>}/>
           <Route path="/login/createUser" exact component={CreateUser}/>
           {/* <Route path="/roundtable" exact component={Roundtable} /> */}
         </UserContext.Provider>
