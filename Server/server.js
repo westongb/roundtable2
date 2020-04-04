@@ -26,8 +26,8 @@ db.once('open', function () {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cors());
 
-  app.get("/get", verifyToken, function (req, res) {
-    const docs = RoundTable.find({}, function (
+  app.get("/roundtable/:user", verifyToken, function (req, res) {
+    const docs = RoundTable.find({'user':req.params.user}, function (
       err, data) {
       if (err) {
         return res.json({ Message: 'this didnt work' })

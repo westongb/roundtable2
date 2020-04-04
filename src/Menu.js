@@ -11,6 +11,7 @@ import storyList from "./Components/Story/storyList";
 import LoginScreen from "./Components/Authentication/LoginScreen";
 import CreateUser from "./Components/Authentication/CreateUser";
 import {LoginContext, LoginProvider, LoginConsumer} from './Components/Authentication/isAuthenticated';
+import LogOutButton from './Components/Authentication/LogOutButton'
 
 export default function Menu() {
 
@@ -40,7 +41,7 @@ export default function Menu() {
               <Link to='/login'>Login</Link>
               <LoginContext.Consumer>
                {render=> {
-             return <span className='userAvater'><img className='Avatar' src='https://library.kissclipart.com/20180922/eve/kissclipart-icon-full-name-clipart-computer-icons-avatar-icon-f6cf26ff2213f36e.jpg'/><p>{user}</p></span>}}
+             return <span><span className='userAvater'><img className='Avatar' src='https://library.kissclipart.com/20180922/eve/kissclipart-icon-full-name-clipart-computer-icons-avatar-icon-f6cf26ff2213f36e.jpg'/><p>{user}</p></span><span><LogOutButton/></span></span>}}
              </LoginContext.Consumer>
 
               {/* <Link to="/about">About</Link> */}
