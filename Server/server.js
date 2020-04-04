@@ -37,22 +37,7 @@ db.once('open', function () {
     });
   });
 
-  app.post('/post', function (req, res) {
-    const NewEntry = new RoundTable({
-      _id: mongoose.Types.ObjectId(),
-      setDate: req.body.setDate,
-      user: req.body.user,
-      Journal: req.body.Journal
-    })
 
-    NewEntry.save().then(result => {
-      console.log(result);
-    })
-      .catch(err => console.log(err));
-    res.status(201).json({
-      message: "Handling Post"
-    })
-  });
 
   app.put('/update/:id', verifyToken, (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
     {$set: req.body } ,
@@ -81,8 +66,8 @@ app.delete('/story/delete/:id',verifyToken, function (req, res) {
 
 
 
-  app.get("/story/get", verifyToken, function (req, res) {
-    const docs = storyschema.find({}, function (
+  app.get("/story/:user", verifyToken, function (req, res) {
+    const docs = storyschema.find({'user':req.params.user}, function (
       err, data) {
       if (err) {
         return res.json({ Message: 'this didnt work' })
@@ -92,10 +77,28 @@ app.delete('/story/delete/:id',verifyToken, function (req, res) {
     });
   });
 
-  app.post('/story', verifyToken, function (req, res) {
+  app.post('/post', function (req, res) {
+    const NewEntry = new RoundTable({
+      _id: mongoose.Types.ObjectId(),
+      setDate: req.body.setDate,
+      user: req.body.user,
+      Journal: req.body.Journal
+    })
+
+    NewEntry.save().then(result => {
+      console.log(result);
+    })
+      .catch(err => console.log(err));
+    res.status(201).json({
+      message: "Handling Post"
+    })
+  });
+
+  app.post('/story', function (req, res) {
     const NewEntry = new storyschema({
       _id: mongoose.Types.ObjectId(),
       date: req.body.date,
+      user: req.body.user,
       story: req.body.story
     })
 

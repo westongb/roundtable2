@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,33 +8,32 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import StoryPopup from "./Storypopup";
+import {LoginContext} from '../Authentication/isAuthenticated'
 
 
 
+export default function StoryList () {
+    useEffect(() => {
+        getStory();
+    },[]);
+
+const {user, token} = useContext(LoginContext)
 
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
     },
   });
-  
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
 
-export default function StoryList () {
-    useEffect(() => {
-        getStory();
-
-    },[]);
-
-    const [stories, setStories] = useState("")
-    const [showPopup, setShowPopup] = useState(true)
+  const [stories, setStories] = useState("")
+  const [showPopup, setShowPopup] = useState(true)
 
     function getStory  () {
-        fetch('http://localhost:5000/story/get', {
-          method: "GET"
+        fetch(`http://localhost:5000/story/${user}`, {
+          method: "GET",
+          headers:{
+            Authorization:"JWT"+" " + token
+          }
         })
     .then(res=> res.json())
     .then(res=> 
@@ -59,6 +58,7 @@ export default function StoryList () {
       } 
 
 
+//Map Story onto Table
 let storiesTable;
 let storyItem;
 let storyDate;

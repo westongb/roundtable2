@@ -1,12 +1,15 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import InputField from "../FormInput";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './Story.css';
+import {LoginContext} from '../Authentication/isAuthenticated'
 
 export default function Story() {
 
+
+  const {user, token} = useContext(LoginContext)
 
   const  [story, setStory] = useState("");
   const [savedStory, setSavedStory] = useState({hits: [] });
@@ -18,9 +21,11 @@ export default function Story() {
     fetch('http://localhost:5000/story', {
       method: 'Post',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: token
     },
     body: JSON.stringify({
+          user: user,
           story: story
     } )})
     .then(
@@ -30,7 +35,12 @@ export default function Story() {
 
 
  
+const submitHandler = event => {
+  console.log(user)
+sendData(user, story, token)
+event.preventDefault()
 
+}
 
 
 
@@ -39,7 +49,7 @@ useEffect(()=> {
   
     return (<div>
         <h1>This Is My Story</h1>
-        <form className='storyform' noValidate autoComplete="off" onSubmit={sendData}>
+        <form className='storyform' noValidate autoComplete="off" onSubmit={submitHandler}>
         <TextField
           id="standard-multiline-flexible"
           className='storyField'
