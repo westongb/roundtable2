@@ -5,7 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
 import Popup from './Popup';
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
-import {UserContext} from '../Authentication/isAuthenticated';
+import {LoginContext} from '../Authentication/isAuthenticated';
 
 export default function SimpleModal(props) {
    
@@ -15,9 +15,7 @@ export default function SimpleModal(props) {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-  const verified = useContext(UserContext);
-
-  const userName = verified.user
+  const {user, token} = useContext(LoginContext)
 
   // Component Life Cycle
  
@@ -109,7 +107,7 @@ export default function SimpleModal(props) {
           <p id="simple-modal-description">
 
 {/* Add componet warcouncil */}
-              <WarCouncil     verifiedUser = {userName}/>
+              <WarCouncil user={user} token={token}  />
             </p>
           <SimpleModal />
         </div>
@@ -139,7 +137,8 @@ export default function SimpleModal(props) {
                       Warrior = {props.Warrior}
                       Magician = {props.Magician}
                       Lover = {props.Lover}
-                      verifiedUser = {()=>{return {userName}}}
+                      user={user}
+                       token={token} 
                 
                     />
             </p>

@@ -38,36 +38,16 @@ class Entrylist extends Component {
                 Journal:"",       
               newEntry:"",
               Open: "",
-              user: props.authenticatedUser
+              user: this.props.location.props,
+             
         }
       } 
   
-  // Component Life Cycle
+ 
   componentDidMount = () => {
   this.getData()
   }
 
-  //Event Handlers
-
-  // handleChange = (event) => {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   this.setState({ [event.target.name]: event.target.value });
-  // }
-
-  // handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   await this.setState({
-  //     setDate: this.state.submitDate,
-  //     Journal: [{King: this.state.King},{Warrior: this.state.Warrior},{Magician:this.state.Magician},{Lover: this.state.Lover}] ,
-  //     })
-  
-  //   await this.sendData(event);
-  //   await this.delay(event);
-  //   await this.clearAnswer(event);
-  //   // await this.getData(event);
-   
-  //   }
 
   
 
@@ -86,7 +66,10 @@ class Entrylist extends Component {
     } 
 
 
-  
+  deconstructUser = () => {
+    const userName = this.state.user.userName
+   
+  }
   
 
 

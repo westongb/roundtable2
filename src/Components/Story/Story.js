@@ -8,7 +8,6 @@ import './Story.css';
 export default function Story() {
 
 
-
   const  [story, setStory] = useState("");
   const [savedStory, setSavedStory] = useState({hits: [] });
   const [isLoaded, setIsLoaded] = useState(true);

@@ -7,15 +7,12 @@ import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Popup from './Popup';
-import {UserContext} from '../Authentication/isAuthenticated';
+import {LoginContext} from '../Authentication/isAuthenticated';
 
 
 
 export default function EntryTable(props) {
 
-
-const userName = useContext(UserContext);
-console.log(userName.user)
 
 let myItem = props.Entrys;
 

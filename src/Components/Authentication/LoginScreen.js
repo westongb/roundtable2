@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import './loginScreen.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateUser from "./CreateUser";
-import {UserContext } from "./isAuthenticated";
+import {LoginContext } from "./isAuthenticated";
 
 
 
@@ -12,7 +12,7 @@ export default function LoginScreen(props){
 
 
 
-const {user, isVerified} = useContext(UserContext);
+const {user, setUser, loggedIn, setLoggedIn, token, writeToken} = useContext(LoginContext);
 
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
@@ -35,9 +35,12 @@ const veryifyLogin= (res) => {
         function (data) {
             let loginResponse = data;
             if(loginResponse=== null){
-                isVerified('incorrect password')
+                setUser('User Name and Password not Found')
             } else {
-               isVerified(userName)
+                console.log(data)
+               setUser(userName)
+               writeToken(data.TokenAuth)
+               setLoggedIn("Logged In")
             }
         }
         

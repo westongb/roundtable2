@@ -26,16 +26,18 @@ class warCouncil extends Component {
       newEntry:"",
       entryId: edit?props.entryId: "",
       update:edit?true: false,
-      user: props.verifiedUser
+      user: props.user,
+      token: props.token
     };
   }
 
   
-  sendData = () =>{
+  sendData = (props) =>{
     fetch('http://localhost:5000/post', {
       method: 'Post',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization : this.state.token
     },
     body: JSON.stringify({
           user: this.state.user,
