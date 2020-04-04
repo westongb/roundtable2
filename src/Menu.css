@@ -3,7 +3,8 @@
     width: 100%;
    justify-content: space-between;
    background-color: moccasin;
-   height: 70px; 
+   height: 90px; 
+   padding-top: 1%;
 }
 
 h2{
@@ -15,9 +16,10 @@ h2{
 }
 
 .menuItems{
+    
     display: flex;
     justify-content: space-evenly;
-    width: 400px;
+    width: 500px;
     background-color: moccasin;
     margin-left: 20px;
 }
@@ -25,4 +27,8 @@ h2{
 .Avatar{
     width: 30px;
     background-color: transparent;
+}
+
+.loggedInMenu{
+    display: flex;
 }

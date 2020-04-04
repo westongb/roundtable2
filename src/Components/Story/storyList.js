@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import StoryPopup from "./Storypopup";
+import './Story.css';
 import {LoginContext} from '../Authentication/isAuthenticated'
 
 

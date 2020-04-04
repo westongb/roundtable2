@@ -3,7 +3,6 @@ import WarCouncil from "./warcouncil";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
-import Popup from './Popup';
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import {LoginContext} from '../Authentication/isAuthenticated';
 
@@ -40,8 +39,8 @@ export default function SimpleModal(props) {
   }
   
   function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
+    const top = 20 + rand();
+    const left = 25 + rand();
   
     return {
       top: `${top}%`,

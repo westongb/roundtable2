@@ -5,8 +5,6 @@ import Home from "./Components/Home";
 import about from "./Components/about";
 import Entrylist from "./Components/roundtable/Entrylist"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Roundtable from "./Components/roundtable/warcouncil";
-import Story from "./Components/Story/Story"
 import storyList from "./Components/Story/storyList";
 import LoginScreen from "./Components/Authentication/LoginScreen";
 import CreateUser from "./Components/Authentication/CreateUser";
@@ -35,13 +33,13 @@ export default function Menu() {
           <h2>King of the Kingdom</h2>
           <nav>
             <span className="menuItems">
-              <Link to="/Home">Home</Link>
-                <Link to= {{pathname:"/roundtableapp/Entrylist", props:{userName:{user}, tokenAuth:{token}}}}>Round Table</Link>
-              <Link to='/story'>Story</Link>
-              <Link to='/login'>Login</Link>
+              <Link to="/Home"><h4>Home</h4></Link>
+                <Link to= {{pathname:"/roundtableapp/Entrylist", props:{userName:{user}, tokenAuth:{token}}}}><h4>Round Table</h4></Link>
+              <Link to='/story'><h4>Story</h4></Link>
+              <Link to='/login'><h4>Login</h4></Link>
               <LoginContext.Consumer>
                {render=> {
-             return <span><span className='userAvater'><img className='Avatar' src='https://library.kissclipart.com/20180922/eve/kissclipart-icon-full-name-clipart-computer-icons-avatar-icon-f6cf26ff2213f36e.jpg'/><p>{user}</p></span><span><LogOutButton/></span></span>}}
+             return <span className="loggedInMenu"><span className='userAvater'><img className='Avatar' src='https://library.kissclipart.com/20180922/eve/kissclipart-icon-full-name-clipart-computer-icons-avatar-icon-f6cf26ff2213f36e.jpg'/><p>{user}</p></span><span><LogOutButton/></span></span>}}
              </LoginContext.Consumer>
 
               {/* <Link to="/about">About</Link> */}

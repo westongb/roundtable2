@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Story from "./Story";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import './Story.css';
 // import "./Entrylist.css";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 
@@ -31,18 +32,30 @@ export default function SimpleModal(props) {
     }
 
             
-  function rand() {
-    return Math.round(Math.random() * 20) - 10;
-  }
+  // function rand() {
+  //   return Math.round(Math.random() * 20) - 10;
+  // }
+  
+  // function getModalStyle() {
+  //   const top = 50 + rand();
+  //   const left = 50 + rand();
+  
+  //   return {
+  //     top: `${top}%`,
+  //     left: `${left}%`,
+  //     transform: `translate(-${top}%, -${left}%)`,
+  //   };
+  // }
+
+
+ 
   
   function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
-  
+   
     return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
+      top: `50px`,
+      left: `50px`,
+      transform: `translate(-10px, -10px)`,
     };
   }
   
@@ -50,10 +63,11 @@ export default function SimpleModal(props) {
     paper: {
       position: 'absolute',
       width: "90%",
+      height: '90%',
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+      padding: theme.spacing(1, 2, 2),
     },
   }));
   
@@ -89,7 +103,7 @@ export default function SimpleModal(props) {
   if (entryId === "")
    {
   return (  
-    <div>
+    <div  >
       <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" onClick={handleOpen}>
         New Entry
       </button>
@@ -98,9 +112,10 @@ export default function SimpleModal(props) {
         aria-describedby="simple-modal-description"
         open={open}
         onClose={handleClose}
+      
       >
         <div style={modalStyle} className={classes.paper}>
-          <p id="simple-modal-description">
+          <p id="simple-modal-description" className="storyBody">
 
 {/* Add componet warcouncil */}
               <Story/>
@@ -113,8 +128,8 @@ export default function SimpleModal(props) {
 } else {
   return (  
     
-    <div>
-      <button type="button"  data-toggle="modal" onClick={handleOpen}>
+    <div >
+      <button type="button" className="btn btn-primary btn-lg"  data-toggle="modal" onClick={handleOpen}>
       {/* <Octicon icon={IssueReopened}/> */}
       New Story
       </button>
@@ -123,6 +138,7 @@ export default function SimpleModal(props) {
         aria-describedby="simple-modal-description"
         open={open}
         onClose={handleClose}
+      
       >
         <div style={modalStyle} className={classes.paper}>
           <p id="simple-modal-description">

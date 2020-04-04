@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { exportAllDeclaration } from "@babel/types";
 import "./warcouncil.css";
-import InputField from "../FormInput";
-import { async } from "q";
 
 
 class warCouncil extends Component {

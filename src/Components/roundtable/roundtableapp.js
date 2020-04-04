@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Roundtable from "./warcouncil";
-import Entrylist from "./Entrylist";
+
 
 
 class roundtableapp extends Component {

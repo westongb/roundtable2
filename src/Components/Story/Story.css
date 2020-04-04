@@ -1,14 +1,36 @@
+
+
 .storyform{
     height: 90%;
-    width: 80%;
+    width: 90%;
     background-color: tan;
-    margin-left: 10%;
-    padding-left: 2%;
-    margin-top:5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top:0%;
 }
 
 .storyField  {
     width: 90%;
-    height: 600px;
-    margin-left: 10%;
+    height: 90%;
+    /* margin-left: 15%; */
 }
+
+.popup{
+    display: flex;
+    align-items: center;
+}
+
+.storyBody{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.storyArea{
+    padding-bottom: -25px;
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 90%;
+}
+

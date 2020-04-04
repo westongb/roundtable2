@@ -1,13 +1,10 @@
 import React, { useState, useContext } from 'react';
-import WarCouncil from "./warcouncil";
-import { makeStyles } from '@material-ui/core/styles';
 import DeleteButton from './DeleteButton';
 import UpdateButton from './UpdateButton';
 import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Popup from './Popup';
-import {LoginContext} from '../Authentication/isAuthenticated';
 
 
 
