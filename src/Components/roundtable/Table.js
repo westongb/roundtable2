@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import WarCouncil from "./warcouncil";
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteButton from './DeleteButton';
@@ -7,10 +7,15 @@ import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Popup from './Popup';
+import {UserContext} from '../Authentication/isAuthenticated';
 
 
 
 export default function EntryTable(props) {
+
+
+const userName = useContext(UserContext);
+console.log(userName.user)
 
 let myItem = props.Entrys;
 
@@ -30,13 +35,13 @@ let entryLover;
 let listLover;
 let journalTable;
 let tableItems;
-
+let entryUser;
 
 
 var i;
 
 //deconstruct data from Get
-tableItems = myItem.map( function (item, i){
+tableItems = myItem.map( function (item, userName, i){
      var itemIndex = item[i];
     var entryId = item._id;
     var setDate = item.setDate;
@@ -44,9 +49,9 @@ tableItems = myItem.map( function (item, i){
     var Warrior = item.Journal[1].Warrior;
     var Magician = item.Journal[2].Magician;
     var Lover = item.Journal[3].Lover;
-  
-
+   
     
+    console.log(entryUser)
     //Arrange data into Table
    return (
      <div className="entryTable">
@@ -64,7 +69,8 @@ tableItems = myItem.map( function (item, i){
           <div>
           <DeleteButton item={entryId}/>
           <span>  </span>
-          <Popup entryId={entryId} item={i} King={King} Warrior={Warrior} Magician={Magician} Lover={Lover}/>
+   <Popup 
+          entryId={entryId} item={i} King={King} Warrior={Warrior} Magician={Magician} Lover={Lover}/>
           </div>
         </td>
         </div>

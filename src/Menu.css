@@ -21,3 +21,8 @@ h2{
     background-color: moccasin;
     margin-left: 20px;
 }
+
+.Avatar{
+    width: 30px;
+    background-color: transparent;
+}

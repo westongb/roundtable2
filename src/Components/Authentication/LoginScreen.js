@@ -10,7 +10,9 @@ import {UserContext } from "./isAuthenticated";
 
 export default function LoginScreen(props){
 
-const [veryifyUser, setVerifiedUser] = useState("");
+
+
+const {user, isVerified} = useContext(UserContext);
 
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
@@ -33,16 +35,13 @@ const veryifyLogin= (res) => {
         function (data) {
             let loginResponse = data;
             if(loginResponse=== null){
-                setVerifiedUser('incorrect password')
+                isVerified('incorrect password')
             } else {
-                setVerifiedUser(userName)
+               isVerified(userName)
             }
         }
         
-    ).then(
-        props.handleUser(veryifyUser)
     )
-
 }
 
 const submitHandler = (event) =>{
@@ -51,9 +50,7 @@ const submitHandler = (event) =>{
 }
 
 
-const isVerified = (props) =>{
-  
-}
+
 
 
 

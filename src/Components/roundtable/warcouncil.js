@@ -4,8 +4,11 @@ import "./warcouncil.css";
 import InputField from "../FormInput";
 import { async } from "q";
 
+
 class warCouncil extends Component {
   constructor(props) {
+
+    
     super(props);
     let edit = false;
     if (props.hasOwnProperty("King")){          
@@ -22,7 +25,8 @@ class warCouncil extends Component {
       Journal:"",       
       newEntry:"",
       entryId: edit?props.entryId: "",
-      update:edit?true: false
+      update:edit?true: false,
+      user: props.verifiedUser
     };
   }
 
@@ -34,6 +38,7 @@ class warCouncil extends Component {
         'Content-Type': 'application/json'
     },
     body: JSON.stringify({
+          user: this.state.user,
           Journal: this.state.Journal
     } )})
     .then(
@@ -65,6 +70,8 @@ class warCouncil extends Component {
       }
   }
 
+
+  
 
 
 
@@ -104,7 +111,8 @@ class warCouncil extends Component {
   
 
      render() {
-       console.log(this.state.update);
+   
+      console.log(this.state.user)
     return (
       <div className="warCouncil">
         <h1>War Council</h1>

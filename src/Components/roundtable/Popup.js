@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import WarCouncil from "./warcouncil";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import "./Entrylist.css";
 import Popup from './Popup';
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
+import {UserContext} from '../Authentication/isAuthenticated';
 
 export default function SimpleModal(props) {
    
@@ -13,6 +14,10 @@ export default function SimpleModal(props) {
   const [King, setKing] = useState(edit?props.King: "")
 
   const [isLoaded, setIsLoaded] = useState(false)
+
+  const verified = useContext(UserContext);
+
+  const userName = verified.user
 
   // Component Life Cycle
  
@@ -85,7 +90,7 @@ export default function SimpleModal(props) {
     }
   }
 
-   
+
   const Toggleform = () => {
   if (entryId === "")
    {
@@ -104,7 +109,7 @@ export default function SimpleModal(props) {
           <p id="simple-modal-description">
 
 {/* Add componet warcouncil */}
-              <WarCouncil/>
+              <WarCouncil     verifiedUser = {userName}/>
             </p>
           <SimpleModal />
         </div>
@@ -134,6 +139,7 @@ export default function SimpleModal(props) {
                       Warrior = {props.Warrior}
                       Magician = {props.Magician}
                       Lover = {props.Lover}
+                      verifiedUser = {()=>{return {userName}}}
                 
                     />
             </p>

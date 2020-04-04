@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const entrySchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    userName: String,
+    user: {type:String,
+                required: true},
     setDate: {
         type: Date,
         default: Date.now,

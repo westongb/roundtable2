@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import WarCouncil from "./warcouncil";
 import "./Entrylist.css";
@@ -12,8 +12,11 @@ import Popup from './Popup';
 import DeleteButton from './DeleteButton';
 import EntryTable from './Table';
 
+
 class Entrylist extends Component {
   constructor(props) {
+
+
 
   super (props);
       this.state = { 
@@ -35,6 +38,7 @@ class Entrylist extends Component {
                 Journal:"",       
               newEntry:"",
               Open: "",
+              user: props.authenticatedUser
         }
       } 
   
@@ -155,7 +159,7 @@ return (
                       Warrior = {this.state.Warrior}
                       Magician = {this.state.Magician}
                       Lover = {this.state.Lover}
-                      onAnswerChange = {this.handleChange}
+                      onAnswerChange = {this.handleChange}   
                       onAnswerSubmit = {this.handleSubmit}/>
 
       

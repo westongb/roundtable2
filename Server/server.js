@@ -41,6 +41,7 @@ db.once('open', function () {
     const NewEntry = new RoundTable({
       _id: mongoose.Types.ObjectId(),
       setDate: req.body.setDate,
+      user: req.body.user,
       Journal: req.body.Journal
     })
 

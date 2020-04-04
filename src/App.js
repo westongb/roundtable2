@@ -8,7 +8,7 @@ import Home from "./Components/Home";
 import Journal from "./Components/JournalEntree";
 import Roundtable from "./Components/roundtable/warcouncil";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {isAuthenticated} from './Components/Authentication/isAuthenticated';
 
 export default function App() {
 
@@ -17,6 +17,7 @@ export default function App() {
 
     return (
       <div>
+
         <Router>
           <Menu />
           {/* <Route path={"about"} component={about} />
@@ -27,6 +28,7 @@ export default function App() {
             />
             <Route path={"/roundtable/journal"} component={Journal}/> */}
         </Router>
+      
       </div>
     );
   }
