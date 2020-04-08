@@ -149,7 +149,7 @@ app.post('/login/:userName', async(req, res, next) => {
   
   const errors = validationResult(req)
   
-  if (!errors.isEmpty()) {
+  if (!errors) {
       return res.status(400).json({
           errors: errors.array()
       })
@@ -159,6 +159,10 @@ app.post('/login/:userName', async(req, res, next) => {
   let user = await Userschema.find({"userName": req.params.userName}).exec(
        async  (err, user) => {
       if (!err) {
+        console.log(user)
+        if(user[0] == undefined){
+            res.send({userName:'Incorrect User Name'})
+        }else{
           //compare passwords using bcrypt
           console.log(user[0].password)
           await bcrypt.compare(req.body.password, user[0].password, function (err, result) {
@@ -166,10 +170,11 @@ app.post('/login/:userName', async(req, res, next) => {
                  const accessToken = jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '36000s'})
                 res.send({'TokenAuth': accessToken})
               } else {
-                  res.send('Incorrect password');
+                  res.send({password:'Incorrect password'});
       
-              }});
-      } else {
+              }
+            });
+      }} else {
               console.log("didn't work")
       }
   })

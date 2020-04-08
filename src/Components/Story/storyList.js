@@ -18,7 +18,7 @@ export default function StoryList () {
         getStory();
     },[]);
 
-const {user, token} = useContext(LoginContext)
+const {user, token, loggedIn} = useContext(LoginContext)
 
 const useStyles = makeStyles({
     table: {
@@ -65,6 +65,9 @@ let storyItem;
 let storyDate;
 let storyId;
 
+console.log(loggedIn)
+
+
 if(stories != "") {
 storiesTable = stories.map((item,i) =>{
     storyId = item._id
@@ -81,7 +84,15 @@ storiesTable = stories.map((item,i) =>{
             }</TableCell>
             </TableRow>
     )
-})}
+})} else{
+ {
+    return(
+      <h1 className="loginBanner">You Must Log In to Write Your Story</h1>
+    )
+  }
+}
+
+
 
 return(
     <div>

@@ -7,6 +7,7 @@ import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import {LoginContext} from '../Authentication/isAuthenticated';
 
 export default function SimpleModal(props) {
+
    
   const [edit, setEdit] = useState(false)
 
@@ -14,7 +15,7 @@ export default function SimpleModal(props) {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-  const {user, token} = useContext(LoginContext)
+  const {user, token, isLoggedIn} = useContext(LoginContext)
 
   // Component Life Cycle
  

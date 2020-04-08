@@ -21,7 +21,7 @@ export default function Entrylist () {
    //  getCurrentCourse();
 },[]);
 
-const {user, token} = useContext(LoginContext)
+const {user, token, loggedIn} = useContext(LoginContext)
 
 const [error, setError] = useState(null)
 const [isLoaded, setIsLoaded] = useState(false)
@@ -70,7 +70,7 @@ const handleOpen = () => {
 setOpen(true)
 };
 
-
+if(loggedIn === true){
 return (
 <div>
 <div className="JournalForm" >
@@ -111,8 +111,11 @@ return (
  
 : null  
 }
-<div>
-</div>  
 </div>
 
-);}
+);}else{
+return(
+  <h1 className="loginBanner">You Must Log In to Meet With Your Party</h1>
+)
+
+}}

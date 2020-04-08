@@ -4,7 +4,7 @@ import "./Menu.css";
 import Home from "./Components/Home";
 import about from "./Components/about";
 import Entrylist from "./Components/roundtable/Entrylist"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import storyList from "./Components/Story/storyList";
 import LoginScreen from "./Components/Authentication/LoginScreen";
 import CreateUser from "./Components/Authentication/CreateUser";
@@ -14,7 +14,7 @@ import LogOutButton from './Components/Authentication/LogOutButton'
 export default function Menu() {
 
  
-       const {user,token} = useContext(LoginContext)
+       const {user,token, loggedIn} = useContext(LoginContext)
 
        const [userName, setUserName] = useState()
 
@@ -33,7 +33,7 @@ export default function Menu() {
           <h2>King of the Kingdom</h2>
           <nav>
             <span className="menuItems">
-              <Link to="/Home"><h4>Home</h4></Link>
+              <Link to="/"><h4>Home</h4></Link>
                 <Link to= {{pathname:"/roundtableapp/Entrylist", props:{userName:{user}, tokenAuth:{token}}}}><h4>Round Table</h4></Link>
               <Link to='/story'><h4>Story</h4></Link>
               <Link to='/login'><h4>Login</h4></Link>
@@ -48,9 +48,9 @@ export default function Menu() {
           </nav>
         </div>
        
-          <Route path="/Home" exact component={Home}  />
+          <Route path="/" exact component={Home}  />
           <Route path="/about" exact component={about} />
-          <Route path="/roundtableapp/Entrylist" exact component={Entrylist} />
+          <Route path="/roundtableapp/Entrylist" exact component={Entrylist} ></Route>
           <Route path="/story" exact component={storyList}/>
           <Route path="/login" exact component={LoginScreen}/>
           <Route path="/login/createUser" exact component={CreateUser}/>
