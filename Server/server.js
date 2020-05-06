@@ -1,8 +1,8 @@
-require('dotenv').config({path:'../.env'});
+require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const nodmon = require('nodemon');
 const cors = require('cors');
 const app = express();
 const { check, validationResult} = require("express-validator/check");
@@ -16,7 +16,7 @@ const RoundTable = require('./Models/Entryschema');
 
 const port = process.env.PORT || 5000;
 
-mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },{ useFindAndModify: false });
+mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -27,6 +27,8 @@ db.once('open', function () {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cors());
+
+  app.use(express.static(path.join(__dirname, 'public')));
 
   app.get("/roundtable/:user", verifyToken, function (req, res) {
     const docs = RoundTable.find({'user':req.params.user}, function (

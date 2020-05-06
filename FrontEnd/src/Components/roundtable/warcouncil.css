@@ -1,0 +1,16 @@
+.warCouncilForm {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    
+}
+
+input{
+    height: 50px;
+    width: 150px;
+}
+
+.warCouncil{
+    align-content: center;
+    background: tan;
+}
