@@ -16,7 +16,7 @@ export default function Story() {
 
 
   function sendData () {
-    fetch('/story', {
+    fetch(`${process.env.PUBLIC_URL}/story`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

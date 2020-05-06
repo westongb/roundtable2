@@ -31,7 +31,7 @@ class warCouncil extends Component {
 
   
   sendData = (props) =>{
-    fetch('http://localhost:5000/post', {
+    fetch(`${process.env.PUBLIC_URL}/post`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ class warCouncil extends Component {
 //Post API
   updateData = () =>{
     const entryId = this.state.entryId
-    fetch(`http://localhost:5000/update/${entryId}`, {
+    fetch(`${process.env.PUBLIC_URL}/update/${entryId}`, {
       method: 'Put',
       headers: {
         'Content-Type': 'application/json'

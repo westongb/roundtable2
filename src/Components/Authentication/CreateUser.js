@@ -16,7 +16,7 @@ const [confirmPassword, setConfirmPassword] = useState('');
 
 
 function postUser(res){
-    fetch("/UserInfo/new", {
+    fetch(`${process.env.PUBLIC_URL}/UserInfo/new`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

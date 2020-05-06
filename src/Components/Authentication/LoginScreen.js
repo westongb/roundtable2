@@ -30,8 +30,10 @@ const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
 
 
+
+
 const veryifyLogin= (res, props) => {
-    fetch(`/login/${userName}`, {
+    fetch(`${process.env.PUBLIC_URL}/login/${userName}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

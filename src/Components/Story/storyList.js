@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   const [showPopup, setShowPopup] = useState(true)
 
     function getStory  () {
-        fetch(`http://localhost:5000/story/${user}`, {
+        fetch(`${process.env.PUBLIC_URL}/story/${user}`, {
           method: "GET",
           headers:{
             Authorization:"JWT"+" " + token
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     }
 
     function deleteStory () {
-        fetch(`http://localhost:5000/story/delete/${storyId}`, {
+        fetch(`${process.env.PUBLIC_URL}/story/delete/${storyId}`, {
             method: "Delete"
           }).then (console.log('has been deleted' + " " + storyId),
           ).then( () => {

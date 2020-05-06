@@ -49,7 +49,7 @@ setTimeout(() => {
 
 
 function getData () {
-fetch(`http://localhost:5000/roundtable/${user}` , {
+fetch(`${process.env.PUBLIC_URL}/roundtable/${user}` , {
  method: "GET",
  headers:{
    Authorization:"JWT"+" " + token
