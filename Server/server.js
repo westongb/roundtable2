@@ -2,17 +2,19 @@ require('dotenv').config({path:'../.env'});
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const RoundTable = require('./Models/Entryschema');
 const nodmon = require('nodemon');
 const cors = require('cors');
-const storyschema = require('./Models/Storyschema');
-var Schema = mongoose.Schema;
 const app = express();
-const port = process.env.PORT || 5000;
-const Userschema = require('./Models/Userschema');
 const { check, validationResult} = require("express-validator/check");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+
+const Userschema = require('./Models/Userschema');
+const storyschema = require('./Models/Storyschema');
+var Schema = mongoose.Schema;
+const RoundTable = require('./Models/Entryschema');
+
+const port = process.env.PORT || 5000;
 
 mongoose.connect('mongodb+srv://Westongb:Abc123890@mature-masculinity-nteci.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },{ useFindAndModify: false });
 

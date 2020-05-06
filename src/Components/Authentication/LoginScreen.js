@@ -31,7 +31,7 @@ const [password, setPassword] = useState('');
 
 
 const veryifyLogin= (res, props) => {
-    fetch(`http://localhost:5000/login/${userName}`, {
+    fetch(`/login/${userName}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

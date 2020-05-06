@@ -16,7 +16,7 @@ const [confirmPassword, setConfirmPassword] = useState('');
 
 
 function postUser(res){
-    fetch("http://localhost:5000/UserInfo/new", {
+    fetch("/UserInfo/new", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

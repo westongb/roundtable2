@@ -16,7 +16,7 @@ export default function Story() {
 
 
   function sendData () {
-    fetch('http://localhost:5000/story', {
+    fetch('/story', {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
