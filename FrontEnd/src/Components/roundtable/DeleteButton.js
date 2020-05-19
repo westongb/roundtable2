@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
-import {uriBase} from "../../consts"
+import {uriBase} from "../../consts";
+import {LoginContext} from '../Authentication/isAuthenticated';
+
 
 export default function DeleteButton (props) {
 
+
+   
+    const {user, token, loggedIn} = useContext(LoginContext)
     const [entryId, setentryId] = useState(props.item)
 
     const [isLoaded, setIsLoaded] =useState(true)
@@ -12,26 +17,15 @@ export default function DeleteButton (props) {
     const deleteRecord = async (event, entryId) => { 
     
         await fetch(`${uriBase}/delete/${entryId}`, {
-          method: 'Delete'
+          method: 'Delete',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization : token
+        },
         })
-        .then (console.log('has been deleted' + "" + entryId),
+        .then (props.loadList()
         )
   }
-
-  const getData = () => {
-    fetch(`${uriBase}/get` , {
-      method: "GET"
-    })
-.then(res=> res.json())
-.then(res=> {
-setIsLoaded(true)
-},
-(error) =>{
-setIsLoaded(true)
-});
-  }
-
-
 
 
 

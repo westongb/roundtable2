@@ -45,7 +45,6 @@ tableItems = myItem.map( function (item, userName, i){
     var Lover = item.Journal[3].Lover;
    
     
-    console.log(entryUser)
     //Arrange data into Table
    return (
      <div className="entryTable">
@@ -61,7 +60,7 @@ tableItems = myItem.map( function (item, userName, i){
            
         <td id="update-delete">
           <div>
-          <DeleteButton item={entryId}/>
+          <DeleteButton loadList={props.loadList} item={entryId} />
           <span>  </span>
    <Popup 
           entryId={entryId} item={i} King={King} Warrior={Warrior} Magician={Magician} Lover={Lover}/>

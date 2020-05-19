@@ -48,10 +48,13 @@ const useStyles = makeStyles({
 
     function deleteStory () {
         fetch(`${uriBase}/story/delete/${storyId}`, {
-            method: "Delete"
-          }).then (console.log('has been deleted' + " " + storyId),
+            method: "Delete",
+            headers:{
+              Authorization:"JWT"+" " + token
+            }
+          }).then (console.log('has been deleted'),
           ).then( () => {
-    window.location.reload(false);
+    getStory();
   })
     }
 
@@ -66,7 +69,7 @@ let storyItem;
 let storyDate;
 let storyId;
 
-console.log(loggedIn)
+
 
 
 if(stories != "") {
@@ -74,7 +77,7 @@ storiesTable = stories.map((item,i) =>{
     storyId = item._id
     storyItem = item.story;
     storyDate = item.date;
-    console.log(storyId)
+
     // storyDate = item.;
     return (
         <TableRow>
@@ -114,7 +117,7 @@ return(
     </TableContainer>
  
        
-      <StoryPopup className="popup"/>
+      <StoryPopup loadList = {getStory} className="popup"/>
   
     </div>
 );

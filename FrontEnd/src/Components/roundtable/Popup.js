@@ -74,7 +74,9 @@ export default function SimpleModal(props) {
       setOpen(true);
     };
   
-    const handleClose = () => {
+    const handleClose = (e) => {
+      e.preventDefault()
+      props.loadList()
       setOpen(false);
       
     };
@@ -107,7 +109,7 @@ export default function SimpleModal(props) {
           <p id="simple-modal-description">
 
 {/* Add componet warcouncil */}
-              <WarCouncil user={user} token={token}  />
+              <WarCouncil closeForm={handleClose} user={user} token={token}  />
             </p>
           <SimpleModal />
         </div>
@@ -132,6 +134,7 @@ export default function SimpleModal(props) {
 
 {/* Add componet warcouncil */}
 <WarCouncil
+                      closeForm={handleClose}
                       entryId = {props.entryId}
                       King = { props.King}
                       Warrior = {props.Warrior}

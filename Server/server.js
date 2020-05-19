@@ -41,18 +41,18 @@ db.once('open', function () {
     });
   });
 
+  app.get('/favicon.ico', (req, res) => res.status(204));
 
 
   app.put('/update/:id', verifyToken, (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
     {$set: req.body } ,
     (err,RoundTable) => {
-      console.log(req.body)
       if(err) return (err);
       res.send('RoundTable Updated' + req.body)
     }
     ))
 
-app.delete('/delete/:id', verifyToken, function (req, res) {
+app.delete('/delete/:id', function (req, res) {
   RoundTable.findByIdAndDelete(req.params.id, (err) => {
     if (err) return next(err);
     res.send('Deleted successfully!' + err);
@@ -60,8 +60,7 @@ app.delete('/delete/:id', verifyToken, function (req, res) {
 });
 
 
-app.delete('/story/delete/:id',verifyToken, function (req, res) {
-  console.log(req.params.id)
+app.delete('/story/delete/:id', function (req, res) {
   storyschema.findByIdAndDelete(req.params.id, (err) => {
     if (err) return next(err);
     res.send('Deleted successfully!' + err);
@@ -118,7 +117,6 @@ app.delete('/story/delete/:id',verifyToken, function (req, res) {
   app.put('/update/story/:id',verifyToken, (req, res) => storyschema.findByIdAndUpdate(req.params.id, 
     {$set: req.body } ,
     (err,storyschema) => {
-      console.log(req.body)
       if(err) return (err);
       res.send('Story Updated' + req.body)
     }
@@ -126,7 +124,6 @@ app.delete('/story/delete/:id',verifyToken, function (req, res) {
 
     app.post('/UserInfo/new', async function (req, res) {
       const hashedPassword =  await bcrypt.hash(req.body.Password, 10);
-      console.log(hashedPassword);
       const NewUser = new Userschema({
         _id: mongoose.Types.ObjectId(),
         firstName : req.body.FirstName,
@@ -163,12 +160,10 @@ app.post('/login/:userName', async(req, res, next) => {
   let user = await Userschema.find({"userName": req.params.userName}).exec(
        async  (err, user) => {
       if (!err) {
-        console.log(user)
         if(user[0] == undefined){
             res.send({userName:'Incorrect User Name'})
         }else{
           //compare passwords using bcrypt
-          console.log(user[0].password)
           await bcrypt.compare(req.body.password, user[0].password, function (err, result) {
               if (result === true) {
                  const accessToken = jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '36000s'})

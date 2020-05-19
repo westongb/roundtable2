@@ -85,6 +85,7 @@ export default function SimpleModal(props) {
     };
   
     const handleClose = () => {
+      props.loadList();
       setOpen(false);
       
     };
@@ -118,7 +119,7 @@ export default function SimpleModal(props) {
           <p id="simple-modal-description" className="storyBody">
 
 {/* Add componet warcouncil */}
-              <Story/>
+              <Story closeForm = {handleClose}/>
             </p>
           <SimpleModal />
         </div>
@@ -145,7 +146,7 @@ export default function SimpleModal(props) {
 
 {/* Add componet warcouncil */}
 <Story
-                      
+   closeForm = {handleClose}                   
                 
                     />
             </p>

@@ -105,6 +105,7 @@ class warCouncil extends Component {
       //Post
     await this.handleEntry(event);
     await this.clearAnswer(event);
+    await this.props.closeForm(event);
     // await this.getData(event);
    
     }
@@ -113,7 +114,6 @@ class warCouncil extends Component {
 
      render() {
    
-      console.log(this.state.user)
     return (
       <div className="warCouncil">
         <h1>War Council</h1>

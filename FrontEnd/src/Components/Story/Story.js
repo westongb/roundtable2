@@ -5,7 +5,7 @@ import './Story.css';
 import {LoginContext} from '../Authentication/isAuthenticated'
 import {uriBase} from "../../consts"
 
-export default function Story() {
+export default function Story(props) {
 
 
   const {user, token} = useContext(LoginContext)
@@ -34,10 +34,11 @@ export default function Story() {
 
 
  
-const submitHandler = event => {
-  console.log(user)
+const submitHandler = (event) => {
+  event.preventDefault()
+  props.closeForm()
 sendData(user, story, token)
-event.preventDefault()
+
 
 }
 

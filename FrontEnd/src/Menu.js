@@ -30,7 +30,7 @@ export default function Menu() {
      
       <Router>
         <div className="Menu">
-          <h2>King of the Kingdom</h2>
+          <h2 className="website-title">King of the Kingdom</h2>
           <nav>
             <span className="menuItems">
               <Link to="/"><h4>Home</h4></Link>

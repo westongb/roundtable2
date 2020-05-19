@@ -86,7 +86,7 @@ return (
    </thead>
        <tbody >
          
-         <EntryTable Entrys={Entrys} showPopup={delay} />
+         <EntryTable loadList={getData}Entrys={Entrys} showPopup={delay} />
          
        </tbody>
  </Table>
@@ -98,6 +98,7 @@ return (
    {showPopup ?  
  <Popup className="popup"
 
+                loadList = {getData} 
                  item = ""
                  entryId = ""
                  King = {King}
