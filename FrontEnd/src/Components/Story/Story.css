@@ -38,3 +38,12 @@
     margin-top: 5%;
     margin-left: 25%;
 }
+
+@media (max-width: 700px){
+
+.storyTable{
+    width: 100%;
+}
+
+
+}

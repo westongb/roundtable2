@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
+import path from "path";
 import './loginScreen.css'
-import { BrowserRouter as Router, Route, Link, Redirect, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect, useHistory, useLocation } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import CreateUser from "./CreateUser";
@@ -67,10 +68,12 @@ const submitHandler = (event) =>{
 }
 
 let history = useHistory();
-let path = `/`;
+let location = useLocation();
+
+let { from } = location.state || { from: { pathname: "/" } };
 
  function routeChange() {
-    history.push(path);
+    history.replace(from);
   }
 
 

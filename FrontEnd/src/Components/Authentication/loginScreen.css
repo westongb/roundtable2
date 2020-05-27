@@ -43,3 +43,11 @@ label{
 .formButton{
     width: 100%;
 }
+
+@media (max-width: 700px){
+
+.loginBox{
+    width: 50%;
+    margin-left: 20%;
+}
+}

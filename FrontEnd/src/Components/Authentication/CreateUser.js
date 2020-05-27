@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link,  useHistory, useLocation } from "react-router-dom";
 import {uriBase} from "../../consts"
-import './LoginScreen';
-
+import path from "path";
+import './loginScreen.css'
 
 export default function CreateUser(){
 
@@ -14,6 +14,14 @@ const [emailAddress, setEmailAddress] = useState('');
 const [userName, setUserName] = useState('');
 const [confirmPassword, setConfirmPassword] = useState('');
 
+let history = useHistory();
+let location = useLocation();
+
+let { from } = location.state || { from: { pathname: "/login" } };
+
+ function routeChange() {
+    history.replace(from);
+  }
 
 
 function postUser(res){
@@ -32,6 +40,8 @@ function postUser(res){
         
     }).then(
         res=> console.log("this Worked")
+    ).then(
+        routeChange()
     )
 }
 
