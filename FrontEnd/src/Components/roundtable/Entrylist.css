@@ -21,3 +21,10 @@ ul{
 .entryTable{
     width: 1000px;
 }
+
+@media (max-width: 700px){
+
+    .entryTable{
+        width: 100%;
+    }
+}

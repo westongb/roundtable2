@@ -44,13 +44,13 @@ export default function Home ( )
     const classes = useStyles();
 
     return <div>
-      <div className="container">
+      <div className="banner">
       <h1 className="bannerText">Are You Ruling Your Kingdom, or is your Kingdom ruling You?</h1>
       <img className="bannerImage" src='https://i.kym-cdn.com/entries/icons/original/000/027/505/king.jpg'></img>
      <h2 className="description">Many men in our day and age spend more time planning out their playable characters in their RPGs than they do planning how they will level up their real life. 
      King of the Kingdom is a tool designed to help us nerdy men start to level up our REAL LIFE CHARACTER, not just their playable ones. </h2>
       </div>
-     
+     <br></br>
       <div className="storyPromo">
       <span className="storyPromoText">
       <span >

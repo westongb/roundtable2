@@ -11,6 +11,7 @@ import StoryPopup from "./Storypopup";
 import './Story.css';
 import {LoginContext} from '../Authentication/isAuthenticated';
 import {uriBase} from '../../consts';
+import ViewStory from "./viewStory";
 
 
 
@@ -70,7 +71,10 @@ let storyDate;
 let storyId;
 
 
+const openViewStory = () => {
 
+
+}
 
 if(stories != "") {
 storiesTable = stories.map((item,i) =>{
@@ -80,13 +84,15 @@ storiesTable = stories.map((item,i) =>{
 
     // storyDate = item.;
     return (
-        <TableRow>
-            <TableCell>{storyDate}</TableCell>
-            <TableCell>{storyItem}</TableCell>
+        <TableRow className="storyData" onClick={openViewStory}>
+            <TableCell  className="storyDate">{storyDate}</TableCell>
+            <TableCell  className="storyText">{storyItem}</TableCell>
             <TableCell>{
-            <button onClick={ ()=> deleteStory(storyId)} >Delete</button>
+            <button className="deleteButton" onClick={ ()=> deleteStory(storyId)} >Delete</button>
             }</TableCell>
+             <ViewStory story={storyItem}/>
             </TableRow>
+           
     )
 })} else{
  {

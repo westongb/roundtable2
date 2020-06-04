@@ -41,9 +41,37 @@
 
 @media (max-width: 700px){
 
-.storyTable{
+.storytable{
     width: 100%;
+    font-size: 20%;
 }
 
+Table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin-right: -20%;
+}
 
+.storyData{
+    width: 40%;
+    font-size: 20%;
+    height: 20%;
+}
+
+.storyText{
+    display: flex;
+    overflow-y: scroll;
+    height: 300px;
+   
+}
+.deleteButton{
+    width: 40%;
+    font-size: 50%;
+   
+}
+
+.storyDate{
+    font-size: 20%;
+}
 }

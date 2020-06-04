@@ -14,3 +14,14 @@ input{
     align-content: center;
     background: tan;
 }
+
+@media (max-width: 700px){
+
+    .warCouncilForm{
+        width: 100%;
+    }
+
+    .warCouncil{
+        width: 100%;
+    }
+}
