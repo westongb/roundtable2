@@ -9,6 +9,10 @@
     margin-top:0%;
 }
 
+.viewStoryButton{
+    color: transparent;
+}
+
 .storyField  {
     width: 90%;
     height: 90%;
@@ -54,7 +58,7 @@ Table {
 }
 
 .storyData{
-    width: 40%;
+    width: 100%;
     font-size: 20%;
     height: 20%;
 }
@@ -63,6 +67,7 @@ Table {
     display: flex;
     overflow-y: scroll;
     height: 300px;
+    font-size: 10px;
    
 }
 .deleteButton{
@@ -74,4 +79,18 @@ Table {
 .storyDate{
     font-size: 20%;
 }
+
+.viewStoryText{
+    font-size: 60%;
+}
+
+.viewStoryButton{
+    display: flex;
+    overflow-y: scroll;
+    color: black;
+    height: 300px;
+    width: 120%;
+    font-size: 12px;
+}
+
 }

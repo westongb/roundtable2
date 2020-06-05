@@ -30,6 +30,7 @@ const useStyles = makeStyles({
 
   const [stories, setStories] = useState("")
   const [showPopup, setShowPopup] = useState(true)
+  const [open, setOpen] = useState(false)
 
     function getStory  () {
         fetch(`${uriBase}/story/${user}`, {
@@ -64,6 +65,10 @@ const useStyles = makeStyles({
       } 
 
 
+const handleOpen = () => {
+        setOpen(true);
+      };
+
 //Map Story onto Table
 let storiesTable;
 let storyItem;
@@ -84,13 +89,13 @@ storiesTable = stories.map((item,i) =>{
 
     // storyDate = item.;
     return (
-        <TableRow className="storyData" onClick={openViewStory}>
+        <TableRow className="storyData" onClick={handleOpen}>
             <TableCell  className="storyDate">{storyDate}</TableCell>
-            <TableCell  className="storyText">{storyItem}</TableCell>
+            <TableCell  className="storyText" > <ViewStory story={storyItem} Open={open}/></TableCell>
             <TableCell>{
             <button className="deleteButton" onClick={ ()=> deleteStory(storyId)} >Delete</button>
             }</TableCell>
-             <ViewStory story={storyItem}/>
+            
             </TableRow>
            
     )

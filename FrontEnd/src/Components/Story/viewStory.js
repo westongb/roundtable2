@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import "../Story/Story.css"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -10,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: '80%',
+    height: '100%',
     margin: "10%"
   },
   paper: {
@@ -17,12 +19,14 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    height: '80%',
   },
+
 }));
 
 export default function TransitionsModal(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(props.Open);
 
   const handleOpen = () => {
     setOpen(true);
@@ -34,8 +38,8 @@ export default function TransitionsModal(props) {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
+      <button type="button" className="viewStoryButton" onClick={handleOpen}>
+        {props.story}
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -51,8 +55,7 @@ export default function TransitionsModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-      <p id="transition-modal-description">{props.story}</p>
+      <p id="transition-modal-description" className="viewStoryText">{props.story}</p>
           </div>
         </Fade>
       </Modal>
