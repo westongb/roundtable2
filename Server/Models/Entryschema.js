@@ -10,7 +10,8 @@ const entrySchema = mongoose.Schema({
         required: true
     },
     Journal: [
-           {King: String , Warrior: String , Magician: String ,  Lover: String }]
+           {King: String , Warrior: String , Magician: String ,  Lover: String }],
+    Retrospective: [{KingRetro: String, WarriorRetro: String, MagicianRetro: String, LoverRetro: String}]
 });
 
 module.exports = mongoose.model('RoundTable', entrySchema, 'RoundTable');

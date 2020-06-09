@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 
 const Userschema = require('./Models/Userschema');
 const storyschema = require('./Models/Storyschema');
+// const retroSchema = require('./Models/Retroschema');
 var Schema = mongoose.Schema;
 const RoundTable = require('./Models/Entryschema');
 
@@ -44,13 +45,15 @@ db.once('open', function () {
   app.get('/favicon.ico', (req, res) => res.status(204));
 
 
-  app.put('/update/:id', verifyToken, (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
-    {$set: req.body } ,
+  app.put('/update/:id', (req, res) => RoundTable.findByIdAndUpdate(req.params.id, 
+    {$set: req.body.Retrospective} ,
     (err,RoundTable) => {
       if(err) return (err);
+      console.log(req.body.Retrospective)
       res.send('RoundTable Updated' + req.body)
     }
     ))
+
 
 app.delete('/delete/:id', function (req, res) {
   RoundTable.findByIdAndDelete(req.params.id, (err) => {
@@ -85,7 +88,8 @@ app.delete('/story/delete/:id', function (req, res) {
       _id: mongoose.Types.ObjectId(),
       setDate: req.body.setDate,
       user: req.body.user,
-      Journal: req.body.Journal
+      Journal: req.body.Journal,
+      Retrospective: req.body.Retrospective
     })
 
     NewEntry.save().then(result => {

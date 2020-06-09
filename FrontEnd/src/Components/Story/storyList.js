@@ -81,7 +81,8 @@ const openViewStory = () => {
 
 }
 
-if(stories != "") {
+if(user != "") {
+  if(stories != ""){
 storiesTable = stories.map((item,i) =>{
     storyId = item._id
     storyItem = item.story;
@@ -99,7 +100,32 @@ storiesTable = stories.map((item,i) =>{
             </TableRow>
            
     )
-})} else{
+})}else {
+  
+return(
+  <div>
+  <TableContainer component={Paper}>
+    <Table className="storytable" aria-label="simple table">
+      <TableHead>
+        <TableRow>
+          <TableCell>Date</TableCell>
+          <TableCell>Story</TableCell>
+          <TableCell ></TableCell>
+          
+        </TableRow>
+      </TableHead>
+      <TableBody>
+          
+       </TableBody>
+    </Table>
+  </TableContainer>
+
+     
+    <StoryPopup loadList = {getStory} className="popup"/>
+
+  </div>
+);
+}} else{
  {
     return(
       <h1 className="loginBanner">You Must Log In to Write Your Story</h1>

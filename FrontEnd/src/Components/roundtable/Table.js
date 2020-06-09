@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import DeleteButton from './DeleteButton';
 import UpdateButton from './UpdateButton';
 import Modal from '@material-ui/core/Modal';
+import Retro from './retrospective';
 import "./Entrylist.css";
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Popup from './Popup';
@@ -30,6 +31,10 @@ let listLover;
 let journalTable;
 let tableItems;
 let entryUser;
+let KingRetro;
+let WarriorRetro;
+let MagicianRetro;
+let LoverRetro;
 
 
 var i;
@@ -43,6 +48,11 @@ tableItems = myItem.map( function (item, userName, i){
     var Warrior = item.Journal[1].Warrior;
     var Magician = item.Journal[2].Magician;
     var Lover = item.Journal[3].Lover;
+    var retroId= item.Retrospective
+    var KingRetro = item.Retrospective[0];
+    var WarriorRetro = item.Retrospective[1];
+    var MagicianRetro = item.Retrospective[2];
+    var LoverRetro = item.Retrospective[3]
    
     
     //Arrange data into Table
@@ -51,10 +61,10 @@ tableItems = myItem.map( function (item, userName, i){
             <td>{setDate}</td>
             <td>
               <ul >
-                    <li><span id="tableTitle">King:</span> {King} <span><input id="checkbox" type="checkbox"/>  </span></li>
-                    <li> <span id="tableTitle">Warrior:</span>{Warrior} <span> <input id="checkbox" type="checkbox" /></span> </li>
-                    <li><span id="tableTitle">Magician:</span>{Magician} <span>  <input id="checkbox" type="checkbox" /></span></li>
-                    <li> <span id="tableTitle">Lover:</span>{Lover}<span> <input id="checkbox" type="checkbox" /> </span></li>
+                    <li><span id="tableTitle">King:</span> {King} <span><Retro entryId={entryId} retroId={retroId} Retro={KingRetro} Archetype="King"/>  </span></li>
+                    <li> <span id="tableTitle">Warrior:</span>{Warrior} <span><Retro entryId={entryId}  retroId={retroId}  Retro={WarriorRetro} Archetype="Warrior"/></span> </li>
+                    <li><span id="tableTitle">Magician:</span>{Magician} <span>  <Retro entryId={entryId}  retroId={retroId} Retro={MagicianRetro} Archetype="Magician"/></span></li>
+                    <li> <span id="tableTitle">Lover:</span>{Lover}<span><Retro entryId={entryId}  retroId={retroId} Retro={LoverRetro} Archetype="Lover"/> </span></li>
                     </ul>
             </td>
            

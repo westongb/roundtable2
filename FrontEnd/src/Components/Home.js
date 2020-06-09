@@ -57,11 +57,11 @@ export default function Home ( )
           Every adventurer knows that you cannot start a journal without a quest, goal and a map. In order to acheive your goals and because the Hero you wish to be, you must map out your goal and quest. What better way to do this, then by writing a story. 
           So type out a one page description of how you would you would want your story to end. This will allow you to then coucil with your party and come up with a plan on how to acheive your goal, save the kingdom and become who you want to be. </span>
            <br></br>
+           <Link to='/story' className='menuLink'>
            <Button variant="contained" size="medium" color="primary" className={classes.margin} >
-             <Link to='/story' className='menuLink'>
                Write Your Story
-               </Link>
                </Button>
+               </Link>
            </span>
       <img className="mapImage" src='https://images.unsplash.com/photo-1470506926202-05d3fca84c9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'/>
       </div>
@@ -75,7 +75,7 @@ export default function Home ( )
           the Magician (Wise and constantly learning. He uses his brain to solve problems) and the Champion/King (Who leads the party and keeps them balanced.) Bring your party together and find out what each thinks. What do you need to do in 
           each of these areas, in order to complete the quest, and fulfill our story.</span>
            <br></br>
-           <Button variant="contained" size="medium" color="primary" className={classes.margin}><Link to="/roundtableapp/Entrylist" className='menuLink'>Start Your Round Table Council</Link></Button>
+           <Link to="/roundtableapp/Entrylist" className='menuLink'><Button variant="contained" size="medium" color="primary" className={classes.margin}>Start Your Round Table Council</Button></Link>
            </span>
       </div>
       </div>

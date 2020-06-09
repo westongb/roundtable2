@@ -26,7 +26,8 @@ class warCouncil extends Component {
       entryId: edit?props.entryId: "",
       update:edit?true: false,
       user: props.user,
-      token: props.token
+      token: props.token,
+      Retrospective: [{KingRetro:""},{WarriorRetro: ""},{MagicianRetro: ""},{LoverRetro:""}]
     };
   }
 
@@ -40,7 +41,8 @@ class warCouncil extends Component {
     },
     body: JSON.stringify({
           user: this.state.user,
-          Journal: this.state.Journal
+          Journal: this.state.Journal,
+          Retrospective: this.state.Retrospective
     } )})
     .then(
       res=> console.log("this Worked")
@@ -53,7 +55,8 @@ class warCouncil extends Component {
     fetch(`${uriBase}/update/${entryId}`, {
       method: 'Put',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization : this.state.token
     },
     body: JSON.stringify({
           Journal: this.state.Journal

@@ -10,7 +10,8 @@
 }
 
 .viewStoryButton{
-    color: transparent;
+    color: black;
+    background-color: transparent;
 }
 
 .storyField  {
@@ -88,6 +89,7 @@ Table {
     display: flex;
     overflow-y: scroll;
     color: black;
+    background-color: transparent;
     height: 300px;
     width: 120%;
     font-size: 12px;
