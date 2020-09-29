@@ -75,13 +75,13 @@ return (
 <div>
 <div className="JournalForm" >
 <h1>Round Table Entrys</h1>
-<button><Octicon icon={IssueReopened} onclick={delay}/></button>
+{/* <button><Octicon icon={IssueReopened} onclick={delay}/></button> */}
 <br></br>
  <Table>
    <thead>
      <tr>
-       <td>Date</td>
-       <td>Journal</td>
+       <th>Date</th>
+       
      </tr>
    </thead>
        <tbody >

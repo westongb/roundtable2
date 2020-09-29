@@ -19,7 +19,14 @@ ul{
 }
 
 .entryTable{
-    width: 1000px;
+    width: 100%;
+    background-color: #E3DCC2;
+
+}
+
+.entryButton{
+    width: 100px;
+    background-color: #51513D ;
 }
 
 @media (max-width: 700px){

@@ -165,7 +165,7 @@ class warCouncil extends Component {
           />
 
           <br />
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button  type="submit" onSubmit={this.handleSubmit}>
            Submit
           </button>
         </form>

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import {uriBase} from "../../consts";
 import {LoginContext} from '../Authentication/isAuthenticated';
-
+import "./Entrylist.css";
 
 export default function DeleteButton (props) {
 
@@ -30,7 +30,7 @@ export default function DeleteButton (props) {
 
 
    return (
-    <button onClick={(event) => deleteRecord(event,entryId)}><Octicon icon={Trashcan} /></button>
+    <button className="entryButton" onClick={(event) => deleteRecord(event,entryId)}><Octicon icon={Trashcan} /></button>
     )
 }
 

@@ -1,7 +1,7 @@
 
 
 .storyform{
-    height: 90%;
+   
     width: 90%;
     background-color: tan;
     margin-left: 5%;
@@ -9,9 +9,19 @@
     margin-top:0%;
 }
 
+
+.storyText{
+    overflow-y: scroll;
+    font-size: 10px;
+   
+}
+
 .viewStoryButton{
     color: black;
     background-color: transparent;
+    width: 100%;
+    overflow-y: scroll;
+    height: 200px;
 }
 
 .storyField  {
@@ -25,6 +35,16 @@
     align-items: center;
 }
 
+.storyContainer{
+    background-color: #E3DCC2;
+}
+
+.storytable{
+    width: 100%;
+    font-size: 20%;
+    background-color: #E3DCC2;
+}
+
 .storyBody{
    display: flex;
    flex-direction: column;
@@ -36,7 +56,7 @@
     display: flex;
    flex-direction: column;
    align-items: center;
-   height: 90%;
+   
 }
 
 .loginBanner{
@@ -44,7 +64,19 @@
     margin-left: 25%;
 }
 
-@media (max-width: 700px){
+#storyText{
+    width: 100%;
+}
+
+@media only screen (max-width: 1200px){
+
+   
+
+}
+
+
+@media only screen (max-width: 700px){
+    
 
 .storytable{
     width: 100%;
@@ -52,22 +84,21 @@
 }
 
 Table {
-    table-layout: fixed;
+    /* table-layout: fixed; */
     width: 100%;
     border-collapse: collapse;
-    margin-right: -20%;
+    /* margin-right: -20%; */
 }
 
 .storyData{
-    width: 100%;
+    /* width: 100%; */
     font-size: 20%;
-    height: 20%;
+    
 }
 
 .storyText{
     display: flex;
     overflow-y: scroll;
-    height: 300px;
     font-size: 10px;
    
 }
@@ -78,7 +109,8 @@ Table {
 }
 
 .storyDate{
-    font-size: 20%;
+    font-size: 10%;
+    width: 10%;
 }
 
 .viewStoryText{
@@ -90,8 +122,8 @@ Table {
     overflow-y: scroll;
     color: black;
     background-color: transparent;
-    height: 300px;
-    width: 120%;
+   
+    width: 100%;
     font-size: 12px;
 }
 

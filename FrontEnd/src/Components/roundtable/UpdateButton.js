@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Octicon, {Trashcan, IssueReopened} from '@primer/octicons-react';
 import Popup from './Popup';
+import "./updateButton.css";
 
 export default function UpdateButton (props) {
 
@@ -27,7 +28,7 @@ export default function UpdateButton (props) {
   
     return (
         <div>
-        <button onClick={handleOpen}><Octicon icon={IssueReopened}/></button>
+        <button  onClick={handleOpen}><Octicon icon={IssueReopened}/></button>
  
    
         {showPopup ?  

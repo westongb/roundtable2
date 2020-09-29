@@ -4,8 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router, Route, Link, useHistory } from "react-router-dom";
 import {LoginContext} from "./Authentication/isAuthenticated";
-
-
+import kingImage from "../Assets/king.jpg";
+import map from "../Assets/map.jpg";
+import knights from "../Assets/roundtable.jpg";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +47,7 @@ export default function Home ( )
     return <div>
       <div className="banner">
       <h1 className="bannerText">Are You Ruling Your Kingdom, or is your Kingdom ruling You?</h1>
-      <img className="bannerImage" src='https://i.kym-cdn.com/entries/icons/original/000/027/505/king.jpg'></img>
+      <img className="bannerImage" src={kingImage}></img>
      <h2 className="description">Many men in our day and age spend more time planning out their playable characters in their RPGs than they do planning how they will level up their real life. 
      King of the Kingdom is a tool designed to help us nerdy men start to level up our REAL LIFE CHARACTER, not just their playable ones. </h2>
       </div>
@@ -58,15 +59,15 @@ export default function Home ( )
           So type out a one page description of how you would you would want your story to end. This will allow you to then coucil with your party and come up with a plan on how to acheive your goal, save the kingdom and become who you want to be. </span>
            <br></br>
            <Link to='/story' className='menuLink'>
-           <Button variant="contained" size="medium" color="primary" className={classes.margin} >
+           <Button variant="contained" size="medium" id="btn" style={{width:"50%"}} color="primary" className={classes.margin} >
                Write Your Story
                </Button>
                </Link>
            </span>
-      <img className="mapImage" src='https://images.unsplash.com/photo-1470506926202-05d3fca84c9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'/>
+      <img className="mapImage" src={map}/>
       </div>
       <div className="roundTablePromo">
-      <img className="roundTableImage" src="https://cdnb.artstation.com/p/assets/images/images/019/370/581/medium/jue-leo-li-roundtable-finalpost.jpg?1563197939"/>
+      <img className="roundTableImage" src={knights}/>
       <div className="sectionBreak"></div>
       <span className="roundTablePromoText">
       <span >
@@ -75,7 +76,7 @@ export default function Home ( )
           the Magician (Wise and constantly learning. He uses his brain to solve problems) and the Champion/King (Who leads the party and keeps them balanced.) Bring your party together and find out what each thinks. What do you need to do in 
           each of these areas, in order to complete the quest, and fulfill our story.</span>
            <br></br>
-           <Link to="/roundtableapp/Entrylist" className='menuLink'><Button variant="contained" size="medium" color="primary" className={classes.margin}>Start Your Round Table Council</Button></Link>
+           <Link to="/roundtableapp/Entrylist" className='menuLink'><Button variant="contained" size="medium" color="primary" id="btn" style={{width:"50%"}} className={classes.margin}>Start Your Round Table Council</Button></Link>
            </span>
       </div>
       </div>

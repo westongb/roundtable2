@@ -19,6 +19,10 @@ input{
     height: 15px;
 }
 
+#btn{
+    background-color: #51513D;
+}
+
 @media (max-width: 700px){
 
     .warCouncilForm{

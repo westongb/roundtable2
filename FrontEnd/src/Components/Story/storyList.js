@@ -92,7 +92,7 @@ storiesTable = stories.map((item,i) =>{
     return (
         <TableRow className="storyData" onClick={handleOpen}>
             <TableCell  className="storyDate">{storyDate}</TableCell>
-            <TableCell  className="storyText" > <ViewStory story={storyItem} Open={open}/></TableCell>
+            <TableCell  className="storyText" > <ViewStory id="storyText"  story={storyItem} Open={open}/></TableCell>
             <TableCell>{
             <button className="deleteButton" onClick={ ()=> deleteStory(storyId)} >Delete</button>
             }</TableCell>
@@ -104,11 +104,11 @@ storiesTable = stories.map((item,i) =>{
   
 return(
   <div>
-  <TableContainer component={Paper}>
+  <TableContainer className="storyContainer" component={Paper}>
     <Table className="storytable" aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>Date</TableCell>
+          <TableCell className="storyDate">Date</TableCell>
           <TableCell>Story</TableCell>
           <TableCell ></TableCell>
           
@@ -141,7 +141,7 @@ return(
       <Table className="storytable" aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
+            <TableCell className="storyDate">Date</TableCell>
             <TableCell>Story</TableCell>
             <TableCell ></TableCell>
             

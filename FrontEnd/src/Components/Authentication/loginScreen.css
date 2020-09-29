@@ -21,7 +21,7 @@ h1{
 
 input{
     width: 60%;
-    background-color: moccasin;
+    background-color: #E3DCC2;
 }
 
 label{
@@ -40,8 +40,9 @@ label{
   
 }
 
-.formButton{
+#formButton{
     width: 100%;
+    background-color: #51513D;
 }
 
 @media (max-width: 700px){

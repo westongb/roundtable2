@@ -96,7 +96,7 @@ export default function SimpleModal(props) {
    {
   return (  
     <div>
-      <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" onClick={handleOpen}>
+      <button type="button" id="btn" className="btn btn-primary btn-lg" data-toggle="modal" onClick={handleOpen}>
         New Entry
       </button>
       <Modal
