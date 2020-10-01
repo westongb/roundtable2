@@ -12,6 +12,7 @@ import './Story.css';
 import {LoginContext} from '../Authentication/isAuthenticated';
 import {uriBase} from '../../consts';
 import ViewStory from "./viewStory";
+import StoryIntro from "./storyIntropop";
 
 
 
@@ -90,6 +91,8 @@ storiesTable = stories.map((item,i) =>{
 
     // storyDate = item.;
     return (
+    
+ 
         <TableRow className="storyData" onClick={handleOpen}>
             <TableCell  className="storyDate">{storyDate}</TableCell>
             <TableCell  className="storyText" > <ViewStory id="storyText"  story={storyItem} Open={open}/></TableCell>
@@ -98,12 +101,19 @@ storiesTable = stories.map((item,i) =>{
             }</TableCell>
             
             </TableRow>
-           
+          
     )
 })}else {
   
 return(
   <div>
+   <div>
+    <div className="storyIntro">
+      <h1>Write Your Own Story</h1>
+      <q className="storyQuote">A journey of a thousand miles begins with a single step.</q>
+      </div>
+      <StoryIntro/>
+      </div>
   <TableContainer className="storyContainer" component={Paper}>
     <Table className="storytable" aria-label="simple table">
       <TableHead>
@@ -128,7 +138,16 @@ return(
 }} else{
  {
     return(
+      <div>
+         <div className="storyIntroTitle">
+    <div  >
+      <h1>Write Your Own Story</h1>
+      <q className="storyQuote">A journey of a thousand miles begins with a single step.</q>
+      </div>
+      <StoryIntro/>
+      </div>
       <h1 className="loginBanner">You Must Log In to Write Your Story</h1>
+      </div>
     )
   }
 }
@@ -137,6 +156,13 @@ return(
 
 return(
     <div>
+     <div className="storyIntroTitle">
+    <div  >
+      <h1>Write Your Own Story</h1>
+      <q className="storyQuote">A journey of a thousand miles begins with a single step.</q>
+      </div>
+      <StoryIntro/>
+      </div>
     <TableContainer component={Paper}>
       <Table className="storytable" aria-label="simple table">
         <TableHead>

@@ -61,12 +61,80 @@
 
 .loginBanner{
     margin-top: 5%;
-    margin-left: 25%;
+   text-align: center;
+   background-color: #E3DCC2;
+   height: 200px;
+   color: #7C0A02;
 }
 
 #storyText{
     width: 100%;
 }
+
+.storyIntroTitle{
+  display: flex;
+  justify-content: center;
+}
+
+.storyIntro .florenceChadwick{
+    font-size: 120%;
+}
+
+.storyIntro q{
+  display: flex;
+  justify-content: center;
+    font-size: large;
+    
+}
+
+.storyIntro h3{
+   margin: 3% 10% 3% 10%;
+}
+.storyIntro h2{
+    background-color: white;
+    text-align: center;
+    color: #7C0A02;
+    font: "Comic Sans MS", cursive, sans-serif;
+    font-weight: 900;
+ }
+
+ .storyIntro p{
+    background-color: #7C0A02;
+    color: #E3DCC2;
+    padding: 2% 10% 2% 10%;
+    text-align: justify;
+ }
+
+ .storyIntro img{
+    width: 40%;
+    margin: 0 30% 0 30%;
+  
+ }
+
+ .infopop{
+     visibility: hidden;
+     position: absolute;
+     background-color: #7C0A02;
+     color: #E3DCC2;
+     border: solid #E3DCC2;
+     border-radius: 30px;
+     width: 180px;
+
+ }
+
+ .infopop p{
+     margin: 3% 2% 3% 2%;
+ }
+
+ .introbutton{
+     position: relative;
+    
+ }
+
+ .introbutton:hover + .infopop{
+    visibility: visible;
+ }
+
 
 @media only screen (max-width: 1200px){
 
