@@ -29,9 +29,65 @@ ul{
     background-color: #51513D ;
 }
 
+.roundTableIntro h1{
+    margin: auto;
+    text-align: center;
+}
+
+.roundTableIntro q {
+   align-items: center;
+}
+
+.roundTableIntro p{
+    background-color: #7C0A02;
+    color: #E3DCC2;
+    padding: 0% 10% 0% 10%;
+    text-align: justify;
+ }
+
+ .storyStatement{
+    background-color: #7C0A02;
+    color: #E3DCC2;
+    height: 100%;
+ }
+
+
+ .roundTableIntro img{
+    width: 80%;
+    margin: 2% 10% 2% 10%;
+  
+ }
+
+ .infopop{
+    visibility: hidden;
+    position: absolute;
+    background-color: #7C0A02;
+    color: #E3DCC2;
+    border: solid #E3DCC2;
+    border-radius: 30px;
+    width: 180px;
+
+}
+
+.infopop p{
+    margin: 3% 2% 3% 2%;
+}
+
+.introbutton{
+    position: absolute;
+    top: 100;
+   
+}
+
+.introbutton:hover + .infopop{
+   visibility: visible;
+}
+
 @media (max-width: 700px){
 
     .entryTable{
         width: 100%;
     }
 }
+
+

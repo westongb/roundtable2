@@ -9,6 +9,12 @@
     margin-top:0%;
 }
 
+.storyPopup{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    transform: translate(-10px, -10px);
+}
 
 .storyText{
     overflow-y: scroll;
@@ -194,5 +200,67 @@ Table {
     width: 100%;
     font-size: 12px;
 }
+
+}
+
+@media only screen (max-width: 500px){
+
+
+    .storyIntro{
+        width: 400px%
+    }
+
+
+    .storyIntroTitle{
+        display: flex;
+        justify-content: center;
+      }
+      
+      .storyIntro .florenceChadwick{
+          font-size: 80%;
+      }
+      
+      .storyIntro q{
+        display: flex;
+        justify-content: center;
+          font-size: medium;
+          
+      }
+      
+      .storyIntro h3{
+         margin: 0 0 0 0;
+      }
+      .storyStatement{
+          background-color: white;
+          text-align: center;
+          color: #7C0A02;
+          font: "Comic Sans MS", cursive, sans-serif;
+          font-weight: 900;
+         
+       }
+      
+       .storyIntro p{
+          background-color: #7C0A02;
+          color: #E3DCC2;
+          padding: 0 0 0 0;
+          text-align: justify;
+       }
+      
+       .storyIntro img{
+          width: 40%;
+          margin: 0 35% 0 35%;
+        display: none;
+       
+       }
+
+.storyDescription{
+    font-size: 60%;
+}
+
+.storyPopup{
+    margin-left: -15%;
+    transform: translate(-100px, -0px),
+}
+
 
 }

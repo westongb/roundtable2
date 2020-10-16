@@ -51,11 +51,11 @@ h2{
 
 .bannerText{
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 45%;
+    left: 20%;
+    right: 20%;
     width: 60%;
-    transform: translate(
-        -50%, -50%);
+    text-align: center;
     color: black;
     font-size: 600%;
     z-index: 3;
@@ -139,12 +139,10 @@ h2{
 
 }
 
-@media  (min-width: 1350px) {
-    .roundTablePromoText{
-        font-size: 150%;
-    }
-    .storyPromoText{
-        font-size: 150%;
+@media  (max-width: 1550px) {
+    .bannerText{
+        font-size: 500%;
+        top: 40%;
     }
  
 }
@@ -158,9 +156,59 @@ h2{
         display: flex;
     }
 
+    .roundTablePromoText{
+        font-size: 150%;
+    }
+    .storyPromoText{
+        font-size: 150%;
+    }
 }
 
-@media (max-width: 700px){
+
+@media only screen and (max-width: 1250px){
+    .bannerText{
+        font-size: 400%;
+        top: 30%;
+    }
+
+    .roundTableImage{
+        width: 50%;
+        height: 50%;
+        padding-top: 3%;
+    }
+
+    .mapImage{
+        width: 50%;
+        height: 80%;
+        
+    }
+
+    .roundTablePromoText{
+        font-size: 120%;
+    }
+    .storyPromoText{
+        font-size: 120%;
+    }
+}
+
+
+@media only screen and (max-width: 950px) {
+    .bannerText{
+        font-size: 300%;
+        top: 30%;
+    }
+
+    .roundTablePromoText{
+        font-size: 100%;
+    }
+    .storyPromoText{
+        font-size: 100%;
+    }
+
+}
+
+
+@media only screen and (max-width: 750px){
 
 
     .container {
@@ -188,15 +236,25 @@ h2{
    }
 
     .menuItems{
-    width: 40%;
+    width: 30%;
     list-style-type: none;
     position: absolute;
     flex-direction: column;
     justify-content: flex-end;
-    margin-left: -20%;
-    margin-top: -15%;
+    margin-left: -10%;
+    margin-top: -4%;
     position: absolute;
-    z-index: 1;
+    z-index: 4;
+    border-radius: 10px;
+    }
+
+    .loggedInMenu{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menuItems h4{
+        font-size: 80%;
     }
     .website-title{
        
@@ -219,10 +277,8 @@ h2{
         width: 100%;
     }
     .bannerText{
-        font-size: 180%;
-        margin-left: -25%;
-        margin-top: -25%;
-        width: 100%;
+        font-size: 300%;
+        top: 20%;
     }
 
     
@@ -232,7 +288,7 @@ h2{
         object-position: c;
     }
     .roundTablePromoText{
-        font-size: 60%;
+        font-size: 80%;
     width: 100%;
     }
    
@@ -252,7 +308,7 @@ h2{
         display: block;
     }
     .storyPromoText{
-        font-size: 60%;
+        font-size: 80%;
         width: 100%;
     }
     .roundTablePromo{
@@ -261,12 +317,42 @@ h2{
         display: flex;
         flex-direction: column-reverse;
     }
-    .bannerText{
-        transform: translate(
-        -0%, -50%);
-    }
+  
 
     #btn{
         font-size: 60%;
     }
+}
+
+
+@media only screen and (max-width: 650px) {
+    .bannerText{
+        font-size: 250%;
+        top: 20%;
+    }
+ 
+}
+
+@media only screen and (max-width: 550px) {
+    .bannerText{
+        font-size: 200%;
+        top: 15%;
+    }
+ 
+}
+
+@media only screen and (max-width: 450px) {
+    .bannerText{
+        font-size: 160%;
+        top: 15%;
+    }
+ 
+}
+
+@media only screen and (max-width: 350px) {
+    .bannerText{
+        font-size: 120%;
+        top: 15%;
+    }
+ 
 }
